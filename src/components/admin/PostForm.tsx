@@ -9,73 +9,78 @@ export default function PostForm({ post }: { post?: any }) {
   const [content, setContent] = useState(post?.content || '')
 
   return (
-    <form action={savePost.bind(null, post?.id || 'new')} className="space-y-6">
+    <form action={savePost.bind(null, post?.id || 'new')} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
+        <div>
+          <label className="form-label">Title <span style={{ color: 'var(--danger)' }}>*</span></label>
+          <input
+            type="text" name="title" defaultValue={post?.title || ''} required
+            className="form-input" placeholder="My Awesome Post"
+          />
+        </div>
+        <div>
+          <label className="form-label">Slug <span style={{ color: 'var(--danger)' }}>*</span></label>
+          <input
+            type="text" name="slug" defaultValue={post?.slug || ''} required
+            className="form-input" placeholder="my-awesome-post"
+          />
+        </div>
+      </div>
+
       <div>
-        <label className="block text-sm font-medium mb-1">Title</label>
-        <input 
-          type="text" 
-          name="title" 
-          defaultValue={post?.title || ''} 
-          required 
-          className="w-full border p-2 rounded" 
+        <label className="form-label">Excerpt</label>
+        <textarea
+          name="excerpt" defaultValue={post?.excerpt || ''}
+          className="form-input"
+          rows={3} placeholder="A short summary shown on the blog listing…"
+          style={{ resize: 'vertical' }}
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Slug</label>
-        <input 
-          type="text" 
-          name="slug" 
-          defaultValue={post?.slug || ''} 
-          required 
-          className="w-full border p-2 rounded" 
+        <label className="form-label">Cover Image URL <span style={{ color: 'var(--text-muted)', fontWeight: 400, textTransform: 'none' }}>(optional)</span></label>
+        <input
+          type="text" name="image" defaultValue={post?.image || ''}
+          className="form-input" placeholder="https://example.com/image.jpg"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Excerpt</label>
-        <textarea 
-          name="excerpt" 
-          defaultValue={post?.excerpt || ''} 
-          className="w-full border p-2 rounded h-20" 
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium mb-1">Cover Image URL (Optional)</label>
-        <input 
-          type="text" 
-          name="image" 
-          defaultValue={post?.image || ''} 
-          className="w-full border p-2 rounded" 
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium mb-1">Content</label>
+        <label className="form-label" style={{ marginBottom: '0.6rem' }}>Content <span style={{ color: 'var(--danger)' }}>*</span></label>
         <input type="hidden" name="content" value={content} />
-        <Editor value={content} onChange={(v) => setContent(v || '')} />
+        <div style={{ borderRadius: '10px', overflow: 'hidden', border: '1px solid var(--border)' }}>
+          <Editor value={content} onChange={(v) => setContent(v || '')} />
+        </div>
       </div>
 
-      <div className="flex items-center gap-2">
-        <input 
-          type="checkbox" 
-          name="published" 
-          id="published" 
-          value="true" 
-          defaultChecked={post?.published || false} 
-          className="h-4 w-4" 
-        />
-        <label htmlFor="published" className="text-sm font-medium">Publish Post</label>
-      </div>
-
-      <div className="flex gap-4">
-        <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
-          {post ? 'Update Post' : 'Create Post'}
-        </button>
-        <Link href="/admin/posts" className="bg-gray-200 text-gray-800 px-6 py-2 rounded hover:bg-gray-300">
-          Cancel
-        </Link>
+      <div style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        padding: '1rem 1.25rem',
+        background: 'var(--bg-secondary)',
+        borderRadius: '10px',
+        border: '1px solid var(--border)',
+      }}>
+        <label htmlFor="published" style={{
+          display: 'flex', alignItems: 'center', gap: '0.75rem',
+          cursor: 'pointer', userSelect: 'none',
+        }}>
+          <input
+            type="checkbox" name="published" id="published" value="true"
+            defaultChecked={post?.published || false}
+            style={{ width: '16px', height: '16px', accentColor: 'var(--accent)', cursor: 'pointer' }}
+          />
+          <div>
+            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)' }}>Publish Post</div>
+            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Make this post visible to the public</div>
+          </div>
+        </label>
+        <div style={{ display: 'flex', gap: '0.75rem' }}>
+          <Link href="/admin/posts" className="btn btn-secondary">Cancel</Link>
+          <button type="submit" className="btn btn-primary">
+            {post ? '✓ Update Post' : '+ Publish Post'}
+          </button>
+        </div>
       </div>
     </form>
   )

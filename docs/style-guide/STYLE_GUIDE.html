@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doc Theme — Style Guide</title>
+  <meta name="description" content="Living style guide for the dark documentation theme. Reference for all available design tokens, components, and patterns." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="doc-theme.css" />
+  <style>
+    /* Style-guide-specific additions */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+    .swatch { border-radius: var(--doc-radius-sm); overflow: hidden; border: 1px solid var(--doc-border); }
+    .swatch-color { height: 64px; }
+    .swatch-info { padding: 10px 12px; background: var(--doc-bg-card); font-size: 0.78rem; }
+    .swatch-info .name { color: var(--doc-text); font-weight: 600; display: block; margin-bottom: 2px; }
+    .swatch-info .value { color: var(--doc-text-muted); font-family: var(--doc-font-mono); font-size: 0.72rem; }
+    .type-sample { margin: 12px 0; padding: 16px 20px; background: var(--doc-bg-card); border: 1px solid var(--doc-border); border-radius: var(--doc-radius); }
+    .type-sample .meta { font-size: 0.7rem; color: var(--doc-text-muted); font-family: var(--doc-font-mono); margin-bottom: 4px; }
+    .spacing-bar { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+    .spacing-bar .bar { background: var(--doc-accent-glow); border: 1px solid var(--doc-border-accent); height: 24px; border-radius: 4px; }
+    .spacing-bar .lbl { font-size: 0.75rem; font-family: var(--doc-font-mono); color: var(--doc-text-muted); min-width: 80px; }
+    .component-demo { margin: 20px 0; padding: 24px; background: var(--doc-bg-surface); border: 1px solid var(--doc-border); border-radius: var(--doc-radius); }
+    .component-demo-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--doc-text-muted); margin-bottom: 16px; font-weight: 600; }
+    .inline-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="doc-progress-bar"><div class="doc-progress-bar-inner"></div></div>
+  <button class="doc-menu-toggle" aria-label="Toggle menu">☰</button>
+  <div class="doc-overlay"></div>
+
+  <!-- ═══ SIDEBAR ═══════════════════════════════ -->
+  <aside class="doc-sidebar">
+    <div class="doc-sidebar-brand">
+      <h1><span class="brand-icon">D</span> Doc Theme</h1>
+      <span class="brand-subtitle">Style Guide v1.0</span>
+    </div>
+    <nav class="doc-sidebar-nav">
+      <div class="doc-nav-group">
+        <div class="doc-nav-group-title">Foundation</div>
+        <a href="#overview"><span class="doc-nav-number">01</span> Overview</a>
+        <a href="#colors"><span class="doc-nav-number">02</span> Colors</a>
+        <a href="#typography"><span class="doc-nav-number">03</span> Typography</a>
+        <a href="#spacing"><span class="doc-nav-number">04</span> Spacing & Radius</a>
+      </div>
+      <div class="doc-nav-group">
+        <div class="doc-nav-group-title">Components</div>
+        <a href="#sections"><span class="doc-nav-number">05</span> Sections</a>
+        <a href="#lists"><span class="doc-nav-number">06</span> Lists</a>
+        <a href="#code"><span class="doc-nav-number">07</span> Code</a>
+        <a href="#callouts"><span class="doc-nav-number">08</span> Callouts</a>
+        <a href="#tables"><span class="doc-nav-number">09</span> Tables</a>
+        <a href="#badges"><span class="doc-nav-number">10</span> Badges</a>
+        <a href="#cards"><span class="doc-nav-number">11</span> Cards</a>
+        <a href="#screenshots"><span class="doc-nav-number">12</span> Screenshots</a>
+      </div>
+      <div class="doc-nav-group">
+        <div class="doc-nav-group-title">Layout</div>
+        <a href="#layout"><span class="doc-nav-number">13</span> Page Layout</a>
+        <a href="#usage"><span class="doc-nav-number">14</span> How to Use</a>
+      </div>
+    </nav>
+    <div class="doc-sidebar-footer">© 2026 Doc Theme</div>
+  </aside>
+
+  <!-- ═══ MAIN ══════════════════════════════════ -->
+  <main class="doc-main">
+    <header class="doc-header">
+      <div class="doc-header-title"><strong>Doc Theme</strong>&nbsp; · &nbsp;Style Guide</div>
+    </header>
+
+    <div class="doc-content">
+
+      <!-- Hero -->
+      <div class="doc-hero">
+        <div class="doc-hero-badge">🎨 Design System</div>
+        <h1>Doc Theme<br />Style Guide</h1>
+        <p>A complete reference for the dark documentation theme. Copy the CSS, JS, and template to any project.</p>
+      </div>
+
+      <!-- ── 01 Overview ──────────────────────── -->
+      <section class="doc-section" id="overview">
+        <div class="doc-section-header">
+          <span class="doc-section-number">01</span>
+          <h2>Overview</h2>
+        </div>
+        <p>This theme is a self-contained design system for building beautiful documentation pages. It consists of three files:</p>
+        <ol>
+          <li><strong><code>doc-theme.css</code></strong> — All styles. Drop-in ready, all classes prefixed with <code>doc-</code>.</li>
+          <li><strong><code>doc-theme.js</code></strong> — Sidebar toggle, scroll progress, lightbox, and active nav.</li>
+          <li><strong><code>template.html</code></strong> — Starter page with placeholder content for every component.</li>
+        </ol>
+        <div class="doc-callout doc-callout--info">
+          <span class="callout-icon">💡</span>
+          <p>All CSS classes use the <code>doc-</code> prefix to avoid conflicts with your existing styles.</p>
+        </div>
+      </section>
+
+      <!-- ── 02 Colors ────────────────────────── -->
+      <section class="doc-section" id="colors">
+        <div class="doc-section-header">
+          <span class="doc-section-number">02</span>
+          <h2>Colors</h2>
+        </div>
+        <p>The color palette is defined as CSS custom properties on <code>:root</code>. Override any variable to customize the theme.</p>
+
+        <h3>Backgrounds</h3>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-color" style="background:#0b0d11;"></div><div class="swatch-info"><span class="name">bg</span><span class="value">--doc-bg · #0b0d11</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#12151c;"></div><div class="swatch-info"><span class="name">bg-surface</span><span class="value">--doc-bg-surface · #12151c</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#181c26;"></div><div class="swatch-info"><span class="name">bg-card</span><span class="value">--doc-bg-card · #181c26</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#1e2330;"></div><div class="swatch-info"><span class="name">bg-card-hover</span><span class="value">--doc-bg-card-hover · #1e2330</span></div></div>
+        </div>
+
+        <h3>Text</h3>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-color" style="background:#e8eaed;"></div><div class="swatch-info"><span class="name">Primary</span><span class="value">--doc-text · #e8eaed</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#9aa0ab;"></div><div class="swatch-info"><span class="name">Secondary</span><span class="value">--doc-text-secondary · #9aa0ab</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#5f6672;"></div><div class="swatch-info"><span class="name">Muted</span><span class="value">--doc-text-muted · #5f6672</span></div></div>
+        </div>
+
+        <h3>Accent</h3>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-color" style="background:#818cf8;"></div><div class="swatch-info"><span class="name">Accent</span><span class="value">--doc-accent · #818cf8</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#a5b4fc;"></div><div class="swatch-info"><span class="name">Accent Bright</span><span class="value">--doc-accent-bright · #a5b4fc</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:rgba(129,140,248,0.15);"></div><div class="swatch-info"><span class="name">Accent Glow</span><span class="value">--doc-accent-glow</span></div></div>
+        </div>
+
+        <h3>Semantic</h3>
+        <div class="swatch-grid">
+          <div class="swatch"><div class="swatch-color" style="background:#34d399;"></div><div class="swatch-info"><span class="name">Green</span><span class="value">--doc-green · #34d399</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#fb923c;"></div><div class="swatch-info"><span class="name">Orange</span><span class="value">--doc-orange · #fb923c</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#f87171;"></div><div class="swatch-info"><span class="name">Red</span><span class="value">--doc-red · #f87171</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#fbbf24;"></div><div class="swatch-info"><span class="name">Yellow</span><span class="value">--doc-yellow · #fbbf24</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#60a5fa;"></div><div class="swatch-info"><span class="name">Blue</span><span class="value">--doc-blue · #60a5fa</span></div></div>
+        </div>
+      </section>
+
+      <!-- ── 03 Typography ────────────────────── -->
+      <section class="doc-section" id="typography">
+        <div class="doc-section-header">
+          <span class="doc-section-number">03</span>
+          <h2>Typography</h2>
+        </div>
+        <p>Two font families are used. Load them from Google Fonts.</p>
+
+        <div class="doc-code-block">
+          <div class="code-header">html</div>
+          <pre><code>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /&gt;</code></pre>
+        </div>
+
+        <h3>Font Families</h3>
+        <div class="type-sample">
+          <div class="meta">--doc-font · Inter · Body text, headings, UI</div>
+          <p style="font-size:1.1rem;">The quick brown fox jumps over the lazy dog.</p>
+        </div>
+        <div class="type-sample">
+          <div class="meta">--doc-font-mono · JetBrains Mono · Code, numbers</div>
+          <p style="font-family:var(--doc-font-mono);font-size:1rem;">const x = 42; // monospace glyphs</p>
+        </div>
+
+        <h3>Heading Scale</h3>
+        <div class="type-sample">
+          <div class="meta">Hero H1 · 2.6rem · Weight 800</div>
+          <h1 style="font-size:2.6rem;font-weight:800;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--doc-text),var(--doc-accent-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0;">Hero Title</h1>
+        </div>
+        <div class="type-sample">
+          <div class="meta">Section H2 · 1.5rem · Weight 700</div>
+          <h2 style="font-size:1.5rem;font-weight:700;letter-spacing:-0.025em;margin:0;">Section Heading</h2>
+        </div>
+        <div class="type-sample">
+          <div class="meta">Subsection H3 · 1.1rem · Weight 600</div>
+          <h3 style="font-size:1.1rem;font-weight:600;margin:0;">Subsection Heading</h3>
+        </div>
+        <div class="type-sample">
+          <div class="meta">Body · 0.92rem · Weight 400 · Line-height 1.7</div>
+          <p style="margin:0;">Body text in the secondary color. Used for paragraphs and descriptions throughout the documentation.</p>
+        </div>
+      </section>
+
+      <!-- ── 04 Spacing & Radius ──────────────── -->
+      <section class="doc-section" id="spacing">
+        <div class="doc-section-header">
+          <span class="doc-section-number">04</span>
+          <h2>Spacing & Radius</h2>
+        </div>
+
+        <h3>Border Radius</h3>
+        <div class="spacing-bar"><span class="lbl">--doc-radius</span><div class="bar" style="width:12px;height:12px;border-radius:12px;"></div><span style="font-size:0.8rem;color:var(--doc-text-muted);">12px — Cards, modals</span></div>
+        <div class="spacing-bar"><span class="lbl">--doc-radius-sm</span><div class="bar" style="width:8px;height:8px;border-radius:8px;"></div><span style="font-size:0.8rem;color:var(--doc-text-muted);">8px — Buttons, nav items</span></div>
+        <div class="spacing-bar"><span class="lbl">--doc-radius-xs</span><div class="bar" style="width:5px;height:5px;border-radius:5px;"></div><span style="font-size:0.8rem;color:var(--doc-text-muted);">5px — Inline code</span></div>
+
+        <h3>Layout Dimensions</h3>
+        <div class="spacing-bar"><span class="lbl">sidebar-w</span><div class="bar" style="width:280px;"></div><span style="font-size:0.8rem;color:var(--doc-text-muted);">280px</span></div>
+        <div class="spacing-bar"><span class="lbl">header-h</span><div class="bar" style="width:64px;"></div><span style="font-size:0.8rem;color:var(--doc-text-muted);">64px</span></div>
+        <div class="spacing-bar"><span class="lbl">content-max</span><div class="bar" style="width:100%;max-width:400px;"></div><span style="font-size:0.8rem;color:var(--doc-text-muted);">860px</span></div>
+      </section>
+
+      <hr />
+
+      <!-- ── 05 Sections ──────────────────────── -->
+      <section class="doc-section" id="sections">
+        <div class="doc-section-header">
+          <span class="doc-section-number">05</span>
+          <h2>Sections</h2>
+        </div>
+        <p>Each documentation section follows this pattern:</p>
+        <div class="doc-code-block">
+          <div class="code-header">html</div>
+          <pre><code>&lt;section class="doc-section" id="my-section"&gt;
+  &lt;div class="doc-section-header"&gt;
+    &lt;span class="doc-section-number"&gt;01&lt;/span&gt;
+    &lt;h2&gt;Section Title&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Content goes here...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+        </div>
+        <p>Sections animate in on page load with a staggered fade-up effect (up to 10 sections).</p>
+      </section>
+
+      <!-- ── 06 Lists ─────────────────────────── -->
+      <section class="doc-section" id="lists">
+        <div class="doc-section-header">
+          <span class="doc-section-number">06</span>
+          <h2>Lists</h2>
+        </div>
+
+        <h3>Ordered List</h3>
+        <div class="component-demo">
+          <div class="component-demo-label">Preview</div>
+          <ol>
+            <li>First step with numbered badge.</li>
+            <li>Second step with <strong>bold text</strong>.</li>
+            <li>Third step referencing <code>code</code>.</li>
+          </ol>
+        </div>
+
+        <h3>Unordered List</h3>
+        <div class="component-demo">
+          <div class="component-demo-label">Preview</div>
+          <ul>
+            <li><strong>Item A</strong> — With description.</li>
+            <li><strong>Item B</strong> — With description.</li>
+            <li><strong>Item C</strong> — With description.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ── 07 Code ──────────────────────────── -->
+      <section class="doc-section" id="code">
+        <div class="doc-section-header">
+          <span class="doc-section-number">07</span>
+          <h2>Code</h2>
+        </div>
+
+        <h3>Inline Code</h3>
+        <p>Use <code>&lt;code&gt;</code> for inline references like <code>npm install</code> or <code>config.json</code>.</p>
+
+        <h3>Code Block</h3>
+        <div class="doc-code-block">
+          <div class="code-header">javascript</div>
+          <pre><code>const config = {
+  theme: 'dark',
+  sidebar: true,
+  maxWidth: 860,
+};
+
+export default config;</code></pre>
+        </div>
+
+        <div class="doc-code-block">
+          <div class="code-header">html structure</div>
+          <pre><code>&lt;div class="doc-code-block"&gt;
+  &lt;div class="code-header"&gt;language&lt;/div&gt;
+  &lt;pre&gt;&lt;code&gt;your code here&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ── 08 Callouts ──────────────────────── -->
+      <section class="doc-section" id="callouts">
+        <div class="doc-section-header">
+          <span class="doc-section-number">08</span>
+          <h2>Callouts</h2>
+        </div>
+        <p>Four callout variants for different contexts.</p>
+
+        <div class="doc-callout doc-callout--info">
+          <span class="callout-icon">💡</span>
+          <p><strong>Info:</strong> Use <code>doc-callout--info</code> for tips and helpful information.</p>
+        </div>
+
+        <div class="doc-callout doc-callout--success">
+          <span class="callout-icon">✅</span>
+          <p><strong>Success:</strong> Use <code>doc-callout--success</code> for confirmations and positive outcomes.</p>
+        </div>
+
+        <div class="doc-callout doc-callout--warning">
+          <span class="callout-icon">⚠️</span>
+          <p><strong>Warning:</strong> Use <code>doc-callout--warning</code> for cautions and prerequisites.</p>
+        </div>
+
+        <div class="doc-callout doc-callout--danger">
+          <span class="callout-icon">🚨</span>
+          <p><strong>Danger:</strong> Use <code>doc-callout--danger</code> for destructive actions and critical warnings.</p>
+        </div>
+      </section>
+
+      <!-- ── 09 Tables ────────────────────────── -->
+      <section class="doc-section" id="tables">
+        <div class="doc-section-header">
+          <span class="doc-section-number">09</span>
+          <h2>Tables</h2>
+        </div>
+        <p>Wrap tables in <code>doc-table-wrapper</code> for styled borders and hover effects.</p>
+
+        <div class="doc-table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Variable</th>
+                <th>Default</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Sidebar width</td><td><code>--doc-sidebar-w</code></td><td>280px</td></tr>
+              <tr><td>Header height</td><td><code>--doc-header-h</code></td><td>64px</td></tr>
+              <tr><td>Content max-width</td><td><code>--doc-content-max</code></td><td>860px</td></tr>
+              <tr><td>Border radius</td><td><code>--doc-radius</code></td><td>12px</td></tr>
+              <tr><td>Transition</td><td><code>--doc-ease</code></td><td>0.25s cubic-bezier</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ── 10 Badges ────────────────────────── -->
+      <section class="doc-section" id="badges">
+        <div class="doc-section-header">
+          <span class="doc-section-number">10</span>
+          <h2>Badges</h2>
+        </div>
+        <p>Inline badges for labels, tags, and status indicators.</p>
+
+        <div class="inline-badges">
+          <span class="doc-badge doc-badge--accent">Accent</span>
+          <span class="doc-badge doc-badge--green">Success</span>
+          <span class="doc-badge doc-badge--orange">Warning</span>
+          <span class="doc-badge doc-badge--red">Danger</span>
+        </div>
+
+        <div class="doc-code-block">
+          <div class="code-header">html</div>
+          <pre><code>&lt;span class="doc-badge doc-badge--accent"&gt;Label&lt;/span&gt;
+&lt;span class="doc-badge doc-badge--green"&gt;Success&lt;/span&gt;
+&lt;span class="doc-badge doc-badge--orange"&gt;Warning&lt;/span&gt;
+&lt;span class="doc-badge doc-badge--red"&gt;Danger&lt;/span&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ── 11 Cards ─────────────────────────── -->
+      <section class="doc-section" id="cards">
+        <div class="doc-section-header">
+          <span class="doc-section-number">11</span>
+          <h2>Cards</h2>
+        </div>
+        <p>Use the card grid for feature highlights, summaries, or grouped content.</p>
+
+        <div class="doc-card-grid">
+          <div class="doc-card">
+            <h4>🎨 Design Tokens</h4>
+            <p>CSS custom properties for colors, spacing, and typography.</p>
+          </div>
+          <div class="doc-card">
+            <h4>📦 Components</h4>
+            <p>Pre-styled sections, lists, code blocks, callouts, and tables.</p>
+          </div>
+          <div class="doc-card">
+            <h4>📱 Responsive</h4>
+            <p>Mobile-first with collapsible sidebar and adaptive layout.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 12 Screenshots ───────────────────── -->
+      <section class="doc-section" id="screenshots">
+        <div class="doc-section-header">
+          <span class="doc-section-number">12</span>
+          <h2>Screenshot Cards</h2>
+        </div>
+        <p>Display UI screenshots in browser-like cards with a toolbar and click-to-zoom lightbox.</p>
+
+        <div class="doc-code-block">
+          <div class="code-header">html</div>
+          <pre><code>&lt;div class="doc-screenshot"&gt;
+  &lt;div class="doc-screenshot-toolbar"&gt;
+    &lt;span class="dot"&gt;&lt;/span&gt;
+    &lt;span class="dot"&gt;&lt;/span&gt;
+    &lt;span class="dot"&gt;&lt;/span&gt;
+    &lt;span class="label"&gt;Caption&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;img src="path/to/image.png" alt="..." /&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <p>The lightbox is activated automatically by <code>doc-theme.js</code> when clicking any <code>.doc-screenshot</code> element.</p>
+      </section>
+
+      <hr />
+
+      <!-- ── 13 Page Layout ───────────────────── -->
+      <section class="doc-section" id="layout">
+        <div class="doc-section-header">
+          <span class="doc-section-number">13</span>
+          <h2>Page Layout</h2>
+        </div>
+        <p>The page uses a fixed sidebar + scrollable main content pattern.</p>
+
+        <div class="doc-code-block">
+          <div class="code-header">structure</div>
+          <pre><code>┌─────────────────────────────────────────────┐
+│ .doc-progress-bar                           │
+├────────────┬────────────────────────────────┤
+│            │ .doc-header (sticky)           │
+│ .doc-      ├────────────────────────────────┤
+│  sidebar   │                                │
+│ (fixed)    │  .doc-content                  │
+│            │    .doc-hero                   │
+│  .brand    │    .doc-section #section-1     │
+│  .nav      │    .doc-section #section-2     │
+│  .footer   │    ...                         │
+│            │                                │
+├────────────┴────────────────────────────────┤
+│ .doc-lightbox (overlay, hidden by default)  │
+└─────────────────────────────────────────────┘</code></pre>
+        </div>
+      </section>
+
+      <!-- ── 14 How to Use ────────────────────── -->
+      <section class="doc-section" id="usage">
+        <div class="doc-section-header">
+          <span class="doc-section-number">14</span>
+          <h2>How to Use</h2>
+        </div>
+
+        <p>To use this theme in another project, follow these steps:</p>
+
+        <ol>
+          <li><strong>Copy the files</strong> into your project's docs folder:</li>
+        </ol>
+
+        <div class="doc-code-block">
+          <div class="code-header">files</div>
+          <pre><code>your-project/
+  docs/
+    doc-theme.css     ← styles
+    doc-theme.js      ← interactivity
+    template.html     ← copy & customize
+    images/           ← your screenshots</code></pre>
+        </div>
+
+        <ol start="2">
+          <li><strong>Copy <code>template.html</code></strong> and rename it (e.g. <code>USER_MANUAL.html</code>).</li>
+          <li><strong>Customize the sidebar</strong> — Update the brand name, icon letter, nav groups, and links.</li>
+          <li><strong>Add your content</strong> — Use the component patterns from this style guide.</li>
+          <li><strong>Add screenshots</strong> — Place images in <code>docs/images/</code> and use the <code>doc-screenshot</code> card pattern.</li>
+        </ol>
+
+        <div class="doc-callout doc-callout--success">
+          <span class="callout-icon">✅</span>
+          <p>That's it! No build step required. Just HTML, CSS, and JS.</p>
+        </div>
+
+        <h3>Customizing Colors</h3>
+        <p>Override any CSS variable in your HTML to change the accent color:</p>
+
+        <div class="doc-code-block">
+          <div class="code-header">css</div>
+          <pre><code>/* Example: Switch to emerald accent */
+:root {
+  --doc-accent:        #34d399;
+  --doc-accent-glow:   rgba(52, 211, 153, 0.15);
+  --doc-accent-bright: #6ee7b7;
+  --doc-border-accent: rgba(52, 211, 153, 0.25);
+}</code></pre>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="doc-lightbox">
+    <button class="doc-lightbox-close" aria-label="Close">✕</button>
+    <img src="" alt="" />
+  </div>
+
+  <script src="doc-theme.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your App — Documentation</title>
+  <meta name="description" content="Documentation for Your App." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="doc-theme.css" />
+</head>
+<body>
+
+  <!-- Scroll progress -->
+  <div class="doc-progress-bar"><div class="doc-progress-bar-inner"></div></div>
+
+  <!-- Mobile toggle -->
+  <button class="doc-menu-toggle" aria-label="Toggle menu">☰</button>
+  <div class="doc-overlay"></div>
+
+  <!-- ═══ SIDEBAR ═══════════════════════════════ -->
+  <aside class="doc-sidebar">
+    <div class="doc-sidebar-brand">
+      <!-- Change the icon letter and app name -->
+      <h1><span class="brand-icon">A</span> Your App</h1>
+      <span class="brand-subtitle">User Manual v1.0</span>
+    </div>
+
+    <nav class="doc-sidebar-nav">
+      <!-- Group 1 -->
+      <div class="doc-nav-group">
+        <div class="doc-nav-group-title">Getting Started</div>
+        <a href="#section-1"><span class="doc-nav-number">01</span> Section One</a>
+        <a href="#section-2"><span class="doc-nav-number">02</span> Section Two</a>
+      </div>
+
+      <!-- Group 2 -->
+      <div class="doc-nav-group">
+        <div class="doc-nav-group-title">Features</div>
+        <a href="#section-3"><span class="doc-nav-number">03</span> Section Three</a>
+        <a href="#section-4"><span class="doc-nav-number">04</span> Section Four</a>
+      </div>
+    </nav>
+
+    <div class="doc-sidebar-footer">© 2026 Your App</div>
+  </aside>
+
+  <!-- ═══ MAIN ══════════════════════════════════ -->
+  <main class="doc-main">
+    <header class="doc-header">
+      <div class="doc-header-title"><strong>Your App</strong>&nbsp; · &nbsp;Documentation</div>
+    </header>
+
+    <div class="doc-content">
+
+      <!-- ── Hero ─────────────────────────────── -->
+      <div class="doc-hero">
+        <div class="doc-hero-badge">📖 User Manual</div>
+        <h1>Your App<br />User Manual</h1>
+        <p>A short description of what your app does and what this manual covers.</p>
+      </div>
+
+      <!-- ── Section 1 ────────────────────────── -->
+      <section class="doc-section" id="section-1">
+        <div class="doc-section-header">
+          <span class="doc-section-number">01</span>
+          <h2>Section One Title</h2>
+        </div>
+
+        <p>Introductory paragraph for this section.</p>
+
+        <!-- Screenshot (optional) -->
+        <div class="doc-screenshot">
+          <div class="doc-screenshot-toolbar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="label">Screenshot Label</span>
+          </div>
+          <img src="images/example.png" alt="Example screenshot" loading="lazy" />
+        </div>
+
+        <!-- Ordered list -->
+        <ol>
+          <li>First step of the process.</li>
+          <li>Second step with <strong>bold emphasis</strong>.</li>
+          <li>Third step referencing <code>some-command</code>.</li>
+        </ol>
+      </section>
+
+      <!-- ── Section 2 ────────────────────────── -->
+      <section class="doc-section" id="section-2">
+        <div class="doc-section-header">
+          <span class="doc-section-number">02</span>
+          <h2>Section Two Title</h2>
+        </div>
+
+        <p>Another paragraph explaining this feature.</p>
+
+        <!-- Unordered list -->
+        <ul>
+          <li><strong>Feature A</strong> — Description of feature A.</li>
+          <li><strong>Feature B</strong> — Description of feature B.</li>
+          <li><strong>Feature C</strong> — Description of feature C.</li>
+        </ul>
+
+        <!-- Callout (info variant) -->
+        <div class="doc-callout doc-callout--info">
+          <span class="callout-icon">💡</span>
+          <p>Helpful tip or important note goes here.</p>
+        </div>
+      </section>
+
+      <hr />
+
+      <!-- ── Section 3 ────────────────────────── -->
+      <section class="doc-section" id="section-3">
+        <div class="doc-section-header">
+          <span class="doc-section-number">03</span>
+          <h2>Section Three Title</h2>
+        </div>
+
+        <p>Content for section three.</p>
+
+        <!-- Code block -->
+        <div class="doc-code-block">
+          <div class="code-header">bash</div>
+          <pre><code>npm install your-package
+npm run dev</code></pre>
+        </div>
+
+        <!-- Warning callout -->
+        <div class="doc-callout doc-callout--warning">
+          <span class="callout-icon">⚠️</span>
+          <p>Warning: Make sure to back up your data before running this command.</p>
+        </div>
+      </section>
+
+      <!-- ── Section 4 ────────────────────────── -->
+      <section class="doc-section" id="section-4">
+        <div class="doc-section-header">
+          <span class="doc-section-number">04</span>
+          <h2>Section Four Title</h2>
+        </div>
+
+        <p>Content for section four.</p>
+
+        <!-- Table -->
+        <div class="doc-table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Column A</th>
+                <th>Column B</th>
+                <th>Column C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Row 1 data</td>
+                <td><code>file-name.ext</code></td>
+                <td>Description</td>
+              </tr>
+              <tr>
+                <td>Row 2 data</td>
+                <td><code>another-file.ext</code></td>
+                <td>Description</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Card grid -->
+        <div class="doc-card-grid">
+          <div class="doc-card">
+            <h4>Card Title</h4>
+            <p>Card description goes here.</p>
+          </div>
+          <div class="doc-card">
+            <h4>Card Title</h4>
+            <p>Card description goes here.</p>
+          </div>
+          <div class="doc-card">
+            <h4>Card Title</h4>
+            <p>Card description goes here.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="doc-lightbox">
+    <button class="doc-lightbox-close" aria-label="Close">✕</button>
+    <img src="" alt="" />
+  </div>
+
+  <!-- Theme JS -->
+  <script src="doc-theme.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="sidebar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#6366f1" flood-opacity="0.25"/>
+    </filter>
+    <filter id="cardshadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="600" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.05"/>
+  </pattern>
+  <rect width="1200" height="600" fill="url(#grid)"/>
+
+  <!-- Glow orb top-right -->
+  <ellipse cx="1050" cy="80" rx="220" ry="160" fill="rgba(99,102,241,0.12)"/>
+  <!-- Glow orb bottom-left -->
+  <ellipse cx="150" cy="520" rx="180" ry="130" fill="rgba(139,92,246,0.1)"/>
+
+  <!-- ── App Window ── -->
+  <rect x="80" y="60" width="1040" height="480" rx="16" fill="#0f172a" filter="url(#shadow)"/>
+
+  <!-- Title bar -->
+  <rect x="80" y="60" width="1040" height="44" rx="16" fill="#1e293b"/>
+  <rect x="80" y="88" width="1040" height="16" fill="#1e293b"/>
+  <!-- Traffic lights -->
+  <circle cx="112" cy="82" r="7" fill="#f87171"/>
+  <circle cx="134" cy="82" r="7" fill="#fbbf24"/>
+  <circle cx="156" cy="82" r="7" fill="#34d399"/>
+  <!-- Title text -->
+  <text x="600" y="87" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle" font-weight="500">Standalone Taskmanager</text>
+
+  <!-- ── Sidebar ── -->
+  <rect x="80" y="104" width="220" height="436" fill="#111827" rx="0"/>
+  <rect x="287" y="104" width="1" height="436" fill="#1e293b"/>
+
+  <!-- Sidebar logo -->
+  <rect x="100" y="124" width="36" height="36" rx="10" fill="url(#accent)"/>
+  <text x="118" y="147" font-family="system-ui, sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">T</text>
+  <text x="148" y="138" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0" font-weight="700">Taskmanager</text>
+  <text x="148" y="154" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">v1.0</text>
+
+  <!-- Sidebar nav items -->
+  <!-- Active: Dashboard -->
+  <rect x="96" y="180" width="192" height="36" rx="8" fill="rgba(99,102,241,0.2)"/>
+  <rect x="96" y="180" width="3" height="36" rx="2" fill="url(#accent)"/>
+  <text x="128" y="203" font-family="system-ui, sans-serif" font-size="13" fill="#818cf8" font-weight="600">⊞  Dashboard</text>
+
+  <text x="128" y="240" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">☰  Task List</text>
+  <text x="128" y="274" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">＋  Create Task</text>
+  <text x="128" y="308" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">◫  Calendar</text>
+  <text x="128" y="342" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">⚙  Settings</text>
+
+  <!-- Sidebar divider -->
+  <rect x="100" y="365" width="180" height="1" fill="#1e293b"/>
+
+  <!-- Mini stats in sidebar -->
+  <text x="100" y="390" font-family="system-ui, sans-serif" font-size="10" fill="#475569" font-weight="600" letter-spacing="0.08em">OVERVIEW</text>
+  <text x="100" y="412" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Total Tasks</text>
+  <text x="272" y="412" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0" text-anchor="end" font-weight="700">24</text>
+  <text x="100" y="432" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Completed</text>
+  <text x="272" y="432" font-family="system-ui, sans-serif" font-size="12" fill="#34d399" text-anchor="end" font-weight="700">18</text>
+  <text x="100" y="452" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Pending</text>
+  <text x="272" y="452" font-family="system-ui, sans-serif" font-size="12" fill="#fbbf24" text-anchor="end" font-weight="700">6</text>
+
+  <!-- ── Main content ── -->
+
+  <!-- Header row -->
+  <text x="312" y="136" font-family="system-ui, sans-serif" font-size="18" fill="#f1f5f9" font-weight="800">Dashboard</text>
+  <text x="312" y="154" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">Monday, March 2026</text>
+
+  <!-- Search bar -->
+  <rect x="820" y="118" width="200" height="32" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="835" y="139" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">🔍 Search tasks…</text>
+
+  <!-- Add task button -->
+  <rect x="1032" y="118" width="72" height="32" rx="8" fill="url(#accent)"/>
+  <text x="1068" y="139" font-family="system-ui, sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="600">+ New</text>
+
+  <!-- ── Stat cards row ── -->
+  <!-- Card 1 -->
+  <rect x="312" y="172" width="170" height="80" rx="12" fill="#1e293b" filter="url(#cardshadow)"/>
+  <rect x="312" y="172" width="170" height="4" rx="2" fill="url(#accent)"/>
+  <text x="328" y="200" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" font-weight="600" letter-spacing="0.06em">TOTAL TASKS</text>
+  <text x="328" y="228" font-family="system-ui, sans-serif" font-size="26" fill="#f1f5f9" font-weight="800">24</text>
+  <text x="456" y="228" font-family="system-ui, sans-serif" font-size="10" fill="#818cf8" text-anchor="end">↑ 4 this week</text>
+
+  <!-- Card 2 -->
+  <rect x="496" y="172" width="170" height="80" rx="12" fill="#1e293b" filter="url(#cardshadow)"/>
+  <rect x="496" y="172" width="170" height="4" rx="2" fill="url(#green)"/>
+  <text x="512" y="200" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" font-weight="600" letter-spacing="0.06em">COMPLETED</text>
+  <text x="512" y="228" font-family="system-ui, sans-serif" font-size="26" fill="#34d399" font-weight="800">18</text>
+  <text x="640" y="228" font-family="system-ui, sans-serif" font-size="10" fill="#34d399" text-anchor="end">75%</text>
+
+  <!-- Card 3 -->
+  <rect x="680" y="172" width="170" height="80" rx="12" fill="#1e293b" filter="url(#cardshadow)"/>
+  <rect x="680" y="172" width="170" height="4" rx="2" fill="#f59e0b"/>
+  <text x="696" y="200" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" font-weight="600" letter-spacing="0.06em">PENDING</text>
+  <text x="696" y="228" font-family="system-ui, sans-serif" font-size="26" fill="#fbbf24" font-weight="800">6</text>
+  <text x="824" y="228" font-family="system-ui, sans-serif" font-size="10" fill="#fbbf24" text-anchor="end">25%</text>
+
+  <!-- Card 4 -->
+  <rect x="864" y="172" width="240" height="80" rx="12" fill="#1e293b" filter="url(#cardshadow)"/>
+  <text x="880" y="200" font-family="system-ui, sans-serif" font-size="10" fill="#64748b" font-weight="600" letter-spacing="0.06em">PROGRESS</text>
+  <!-- Progress bar bg -->
+  <rect x="880" y="210" width="208" height="10" rx="5" fill="#334155"/>
+  <!-- Progress bar fill -->
+  <rect x="880" y="210" width="156" height="10" rx="5" fill="url(#accent)"/>
+  <text x="880" y="242" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">75% of tasks complete</text>
+
+  <!-- ── Task list ── -->
+  <text x="312" y="284" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8" font-weight="700">Recent Tasks</text>
+
+  <!-- Task rows -->
+  <!-- Task 1 - done -->
+  <rect x="312" y="296" width="792" height="44" rx="10" fill="#1e293b"/>
+  <rect x="320" y="314" width="16" height="16" rx="4" fill="#10b981"/>
+  <text x="342" y="326" font-family="system-ui, sans-serif" font-size="12" fill="#64748b" text-decoration="line-through">Design landing page mockup</text>
+  <rect x="920" y="307" width="60" height="20" rx="10" fill="rgba(16,185,129,0.15)"/>
+  <text x="950" y="321" font-family="system-ui, sans-serif" font-size="10" fill="#34d399" text-anchor="middle" font-weight="600">Done</text>
+  <text x="992" y="322" font-family="system-ui, sans-serif" font-size="10" fill="#475569">Mar 10</text>
+
+  <!-- Task 2 - in progress -->
+  <rect x="312" y="348" width="792" height="44" rx="10" fill="#1e293b"/>
+  <rect x="320" y="366" width="16" height="16" rx="4" fill="none" stroke="#6366f1" stroke-width="2"/>
+  <rect x="324" y="370" width="8" height="8" rx="2" fill="#6366f1"/>
+  <text x="342" y="378" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Implement authentication flow</text>
+  <rect x="908" y="359" width="72" height="20" rx="10" fill="rgba(99,102,241,0.15)"/>
+  <text x="944" y="373" font-family="system-ui, sans-serif" font-size="10" fill="#818cf8" text-anchor="middle" font-weight="600">In Progress</text>
+  <text x="992" y="374" font-family="system-ui, sans-serif" font-size="10" fill="#475569">Mar 12</text>
+
+  <!-- Task 3 - pending -->
+  <rect x="312" y="400" width="792" height="44" rx="10" fill="#1e293b"/>
+  <rect x="320" y="418" width="16" height="16" rx="4" fill="none" stroke="#334155" stroke-width="2"/>
+  <text x="342" y="430" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Write unit tests for API endpoints</text>
+  <rect x="920" y="411" width="60" height="20" rx="10" fill="rgba(251,191,36,0.12)"/>
+  <text x="950" y="425" font-family="system-ui, sans-serif" font-size="10" fill="#fbbf24" text-anchor="middle" font-weight="600">Pending</text>
+  <text x="992" y="426" font-family="system-ui, sans-serif" font-size="10" fill="#475569">Mar 15</text>
+
+  <!-- Task 4 - pending -->
+  <rect x="312" y="452" width="792" height="44" rx="10" fill="#1e293b"/>
+  <rect x="320" y="470" width="16" height="16" rx="4" fill="none" stroke="#334155" stroke-width="2"/>
+  <text x="342" y="482" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">Deploy to production server</text>
+  <rect x="920" y="463" width="60" height="20" rx="10" fill="rgba(248,113,113,0.12)"/>
+  <text x="950" y="477" font-family="system-ui, sans-serif" font-size="10" fill="#f87171" text-anchor="middle" font-weight="600">Urgent</text>
+  <text x="992" y="478" font-family="system-ui, sans-serif" font-size="10" fill="#475569">Mar 13</text>
+
+  <!-- Bottom bar subtle -->
+  <rect x="80" y="516" width="1040" height="24" rx="0" fill="#070d19" opacity="0.6"/>
+  <text x="600" y="532" font-family="system-ui, sans-serif" font-size="10" fill="#334155" text-anchor="middle">Standalone Taskmanager · Built with React Native</text>
+</svg>

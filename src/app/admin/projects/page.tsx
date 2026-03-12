@@ -1,57 +1,105 @@
 import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import { deleteProject } from "@/app/actions/project"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = { title: "Manage Projects" }
 
 export default async function AdminProjects() {
-  const projects = await prisma.project.findMany({
-    orderBy: { createdAt: 'desc' }
-  })
+  const projects = await prisma.project.findMany({ orderBy: { createdAt: 'desc' } })
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Manage Projects</h1>
-        <Link href="/admin/projects/new" className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700">
-          Create New Project
-        </Link>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
+        <div>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-primary)', marginBottom: '4px' }}>
+            Projects
+          </h1>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{projects.length} project{projects.length !== 1 ? 's' : ''} total</p>
+        </div>
+        <Link href="/admin/projects/new" className="btn btn-primary">+ New Project</Link>
       </div>
-      
-      <div className="bg-white shadow rounded-lg overflow-hidden border">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200">
-            {projects.map(project => (
-              <tr key={project.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 font-medium text-gray-900">{project.title}</td>
-                <td className="px-6 py-4">
-                  <span className={`px-2 py-1 text-xs rounded-full ${project.published ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
-                    {project.published ? 'Published' : 'Draft'}
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-gray-500">{project.createdAt.toLocaleDateString()}</td>
-                <td className="px-6 py-4 text-right space-x-4">
-                  <Link href={`/admin/projects/${project.id}`} className="text-blue-600 hover:text-blue-900">Edit</Link>
-                  <form action={deleteProject.bind(null, project.id)} className="inline">
-                    <button type="submit" className="text-red-600 hover:text-red-900">Delete</button>
-                  </form>
-                </td>
-              </tr>
-            ))}
-            {projects.length === 0 && (
-              <tr>
-                <td colSpan={4} className="px-6 py-12 text-center text-gray-500">No projects found.</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+
+      <div style={{
+        background: 'var(--bg-card)',
+        border: '1px solid var(--border)',
+        borderRadius: 'var(--radius-lg)',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          display: 'grid', gridTemplateColumns: '1fr 110px 140px 100px',
+          padding: '0.65rem 1.25rem',
+          background: 'var(--bg-secondary)',
+          borderBottom: '1px solid var(--border)',
+          fontSize: '0.72rem', fontWeight: 700,
+          textTransform: 'uppercase', letterSpacing: '0.07em',
+          color: 'var(--text-muted)',
+        }}>
+          <span>Title</span><span>Status</span><span>Date</span>
+          <span style={{ textAlign: 'right' }}>Actions</span>
+        </div>
+
+        {projects.map((project, i) => (
+          <div key={project.id} style={{
+            display: 'grid', gridTemplateColumns: '1fr 110px 140px 100px',
+            padding: '1rem 1.25rem', alignItems: 'center',
+            borderBottom: i < projects.length - 1 ? '1px solid var(--border)' : 'none',
+            gap: '0.5rem',
+          }}
+            className="admin-row"
+          >
+            <div>
+              <div style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-primary)', marginBottom: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {project.title}
+              </div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>/{project.slug}</div>
+            </div>
+            <span className={`badge ${project.published ? 'badge-published' : 'badge-draft'}`}>
+              {project.published ? '● Published' : '○ Draft'}
+            </span>
+            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+              {project.createdAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+            </div>
+            <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end', alignItems: 'center' }}>
+              <Link href={`/admin/projects/${project.id}`} className="admin-edit-link">
+                Edit
+              </Link>
+              <form action={deleteProject.bind(null, project.id)} style={{ display: 'inline' }}>
+                <button type="submit" className="admin-delete-btn">
+                  Delete
+                </button>
+              </form>
+            </div>
+          </div>
+        ))}
+
+        {projects.length === 0 && (
+          <div style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
+            No projects found.{' '}
+            <Link href="/admin/projects/new" style={{ color: 'var(--accent-light)', textDecoration: 'none' }}>
+              Create your first project →
+            </Link>
+          </div>
+        )}
       </div>
+
+      <style>{`
+        .admin-row:hover { background: rgba(255,255,255,0.025) !important; }
+        .admin-edit-link {
+          font-size: 0.8rem; color: var(--accent-light);
+          text-decoration: none; font-weight: 600;
+          transition: opacity 0.15s;
+        }
+        .admin-edit-link:hover { opacity: 0.75; }
+        .admin-delete-btn {
+          background: none; border: none; cursor: pointer;
+          font-size: 0.8rem; color: var(--text-muted);
+          font-weight: 600; padding: 0;
+          transition: color 0.15s;
+          font-family: inherit;
+        }
+        .admin-delete-btn:hover { color: var(--danger) !important; }
+      `}</style>
     </div>
   )
 }

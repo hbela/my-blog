@@ -1,22 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const firaCode = Fira_Code({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-fira-code",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Professional portfolio and blog",
+  title: { default: "My Portfolio", template: "%s | My Portfolio" },
+  description: "Professional portfolio and blog — sharing thoughts on code, design, and technology.",
 };
 
 export default function RootLayout({
@@ -25,15 +29,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
-      >
+    <html lang="en" className={`${inter.variable} ${firaCode.variable}`}>
+      <body className="antialiased min-h-screen flex flex-col">
         <Providers>
           <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
+          <main className="flex-1">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>

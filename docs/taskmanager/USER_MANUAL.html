@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standalone Taskmanager � Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="doc-theme.css" />
+</head>
+<body>
+  <div class="doc-progress-bar"><div class="doc-progress-bar-inner"></div></div>
+  <button class="doc-menu-toggle" aria-label="Toggle menu">?</button>
+  <div class="doc-overlay"></div>
+  
+  <aside class="doc-sidebar">
+    <div class="doc-sidebar-brand">
+      <h1><span class="brand-icon">T</span> Taskmanager</h1>
+      <span class="brand-subtitle">User Manual v1.0</span>
+    </div>
+    <nav class="doc-sidebar-nav">
+      <div class="doc-nav-group">
+        <div class="doc-nav-group-title">Main Screens</div>
+        <a href="#welcome-screen"><span class="doc-nav-number">01</span> Welcome Screen</a>
+        <a href="#create-task-screen"><span class="doc-nav-number">02</span> Create Task</a>
+        <a href="#task-list-screen"><span class="doc-nav-number">03</span> Task List</a>
+        <a href="#task-details-screen"><span class="doc-nav-number">04</span> Task Details</a>
+        <a href="#edit-task-screen"><span class="doc-nav-number">05</span> Edit Task</a>
+        <a href="#calendar-screen"><span class="doc-nav-number">06</span> Calendar</a>
+        <a href="#dashboard-screen"><span class="doc-nav-number">07</span> Dashboard</a>
+        <a href="#settings-screen"><span class="doc-nav-number">08</span> Settings</a>
+      </div>
+    </nav>
+    <div class="doc-sidebar-footer">� 2026 Taskmanager</div>
+  </aside>
+
+  <main class="doc-main">
+    <header class="doc-header">
+      <div class="doc-header-title"><strong>Taskmanager</strong>&nbsp; � &nbsp;Documentation</div>
+    </header>
+    <div class="doc-content">
+      <div class="doc-hero">
+        <div class="doc-hero-badge">?? User Manual</div>
+        <h1>Standalone Taskmanager<br />User Manual</h1>
+        <p>A comprehensive guide on using the Standalone Taskmanager application.</p>
+      </div>
+
+      <section class="doc-section" id="welcome-screen">
+<div class="doc-section-header">
+<span class="doc-section-number">01</span>
+<h2>Welcome Screen</h2>
+</div>
+<h3>Overview</h3>
+<p>The <strong>Welcome Screen</strong> is the first thing you see when launching the application. It provides a quick introduction to the app&#39;s key features and capabilities.</p>
+<p><div class="doc-screenshot">
+  <div class="doc-screenshot-toolbar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="label">Screenshot</span>
+  </div>
+  <img src="../images-user-manual/welcome.png" alt="Welcome Screen" loading="lazy" />
+</div></p>
+<h3>Features</h3>
+<ul>
+<li><p><strong>Key Features Overview</strong>: A scrolling list of cards highlighting what the app can do:</p>
+<ul>
+<li><p><strong>Organize Your Tasks</strong>: Create and manage tasks with priorities and deadlines.</p>
+</li>
+<li><p><strong>Contact Integration</strong>: Link tasks to people in your address book.</p>
+</li>
+<li><p><strong>Voice Input</strong>: Use speech-to-text for hands-free task creation.</p>
+</li>
+<li><p><strong>Calendar View</strong>: Visualize your schedule.</p>
+</li>
+<li><p><strong>Multi-Language Support</strong>: Available in English, Hungarian, French, and German.</p>
+</li>
+<li><p><strong>Google Drive Export</strong>: Backup your completed tasks.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Actions</h3>
+<ul>
+<li><p><strong>Get Started</strong>: Tap the large button at the bottom to dismiss the welcome screen and enter the main application.</p>
+</li>
+<li><p><strong>Screen Capture</strong>: A camera icon in the top-right corner allows you to take a screenshot of this view.</p>
+</li>
+</ul>
+<p><em>Note: You can disable this screen in the Settings if you prefer to go straight to your tasks.</em></p>
+</section>
+<hr />
+<section class="doc-section" id="create-task-screen">
+<div class="doc-section-header">
+<span class="doc-section-number">02</span>
+<h2>Create Task Screen</h2>
+</div>
+<h3>Overview</h3>
+<p>The <strong>Create Task Screen</strong> allows you to add new tasks to your list, ensuring you never miss an important deadline or activity.</p>
+<h3>Accessing the Screen</h3>
+<ul>
+<li>Tap the ** &quot;+&quot; Add new task** button located in the center of the bottom navigation bar from any main screen.</li>
+</ul>
+<p><div class="doc-screenshot">
+  <div class="doc-screenshot-toolbar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="label">Screenshot</span>
+  </div>
+  <img src="../images-user-manual/create-1.png" alt="Create Task Screen 1" loading="lazy" />
+</div></p>
+<p><div class="doc-screenshot">
+  <div class="doc-screenshot-toolbar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="label">Screenshot</span>
+  </div>
+  <img src="../images-user-manual/create-2.png" alt="Create Task Screen 2" loading="lazy" />
+</div></p>
+<h3>Features &amp; Fields</h3>
+<h4>1. Task Creation</h4>
+<ul>
+<li><p><strong>Title</strong>: Enter a concise name for your task. This is a required field.</p>
+<ul>
+<li><em>Tip</em>: Use the <strong>microphone icon</strong> next to the input to dictate the title using your voice.</li>
+</ul>
+</li>
+<li><p><strong>Description</strong> optional: Add detailed information about the task.</p>
+<ul>
+<li><em>Voice Input</em>: Use the microphone button below the field to dictate long descriptions.</li>
+</ul>
+</li>
+<li><p><strong>Comment</strong> optional: Add any initial comments or notes relevant to the task.</p>
+<ul>
+<li><em>Voice Input</em>: Use the microphone button below the field to dictate long descriptions.</li>
+</ul>
+<p>  Click and hold the microphone icon to start dictating. Release the microphone icon to stop dictating.You can combine voice input with typing.Use which ever method you prefer.</p>
+</li>
+</ul>
+<h4>2. Financials, optional</h4>
+<ul>
+<li><p><strong>Bill Amount</strong>: Toggle the switch if this task involves a payment or expense.</p>
+<ul>
+<li><p>Enter the amount in the field provided.</p>
+</li>
+<li><p>The currency is set to your default currency.</p>
+</li>
+<li><p>the currency dropdown button (showing a symbol like $, ÔéČ, Ft) to change the billing currency (USD, EUR, GBP, HUF).</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>3. Priority</h4>
+<ul>
+<li><p>Select a priority level to categorize the urgency of the task. The selected priority is highlighted:</p>
+<ul>
+<li><p><strong>Low</strong> (Green)</p>
+</li>
+<li><p><strong>Medium</strong> (Blue - Default)</p>
+</li>
+<li><p><strong>High</strong> (Orange)</p>
+</li>
+<li><p><strong>Urgent</strong> (Red)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>4. Contacts, optional</h4>
+<ul>
+<li><strong>Link Contact</strong>: Tap the <strong>Search Button</strong> to associate a person from your device&#39;s contacts with this task.</li>
+</ul>
+<p>Enter the name of the contact you want to link to the task. The app will search your device&#39;s contacts and display matching results. Select the desired contact to link them to the task.If the contact has an address, it will be displayed below the contact name. You can tap the address to open it in Google Maps.</p>
+<ul>
+<li><strong>Remove Contact</strong>: If a contact is selected, tap the <strong>Remove</strong> button to unlink them.</li>
+</ul>
+<h4>5. Scheduling, optional</h4>
+<ul>
+<li><p><strong>Due Date</strong>: Tap the calendar input to open the calendar and set a deadline.</p>
+</li>
+<li><p><strong>Time</strong>: Once a date is picked, a time field appears. Tap the clock input to set a specific time.</p>
+</li>
+<li><p><strong>Reminders</strong>: Enable the &quot;Reminders&quot; switch to set notifications (requires a Due Date).</p>
+<ul>
+<li>Select one or more options (e.g. &quot;10 minutes before&quot;, &quot;1 hour before&quot;, &quot;1 day before&quot;) to receive alerts.</li>
+</ul>
+</li>
+</ul>
+<h3>Actions</h3>
+<ul>
+<li><p><strong>Save</strong>: Tap the solid button at the bottom (e.g., &quot;Create Task&quot;) to save the task to your list.</p>
+</li>
+<li><p><strong>Create &amp; Mark Complete</strong>: Tap the outlined button to create the task and immediately mark it as finished.</p>
+</li>
+</ul>
+<hr>
+</section>
+<hr />
+<section class="doc-section" id="task-list-screen">
+<div class="doc-section-header">
+<span class="doc-section-number">03</span>
+<h2>Task List Screen</h2>
+</div>
+<h3>Overview</h3>
+<p>The <strong>Task List Screen</strong> is the main hub of the application. It displays all your tasks, categorized by their status, and provides quick access to search and management tools.</p>
+<h3>Accessing the Screen</h3>
+<ul>
+<li><p>Tap the <strong>&quot;Tasks&quot; (List)</strong> icon on the left side of the bottom navigation bar.</p>
+</li>
+<li><p>This is usually the default screen when you open the app.</p>
+</li>
+</ul>
+<p><div class="doc-screenshot">
+  <div class="doc-screenshot-toolbar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="label">Screenshot</span>
+  </div>
+  <img src="../images-user-manual/tasks.png" alt="Task List Screen" loading="lazy" />
+</div></p>
+<h3>Features</h3>
+<h4>1. Filtering Tasks</h4>
+<p>Use the chips (buttons) at the top of the list to filter tasks:</p>
+<ul>
+<li><p><strong>Pending</strong>: Shows tasks that are active and not yet overdue.</p>
+</li>
+<li><p><strong>Overdue</strong>: Critical tasks that have passed their due date.</p>
+</li>
+<li><p><strong>Completed</strong>: A history of all your finished tasks.</p>
+</li>
+<li><p><strong>All</strong>: Displays every task, categorized and sorted by urgency.</p>
+</li>
+</ul>
+<h4>2. Search</h4>
+<ul>
+<li><p>Tap the <strong>Magnifying Glass</strong> icon in the top right header to open the search bar.</p>
+</li>
+<li><p>Type any part of a task&#39;s title or description to instantly filter the list.</p>
+</li>
+</ul>
+<h4>3. Task Cards</h4>
+<p>Each task is displayed as a card containing:</p>
+<ul>
+<li><p><strong>Status Icon</strong>: A checkbox icon indicates if the task is complete (green) or pending (square).</p>
+</li>
+<li><p><strong>Title &amp; Description</strong>: The main details of the task. Completed tasks appear crossed out.</p>
+</li>
+<li><p><strong>Priority Label</strong>: A colored tag showing the urgency (Low, Medium, High, Urgent).</p>
+</li>
+<li><p><strong>Dates</strong>: display underneath the description.</p>
+<ul>
+<li><p><strong>Creation Date</strong>: When the task was added.</p>
+</li>
+<li><p><strong>Due Date</strong>: The deadline, if set. Overdue dates appear in red with an alert icon.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Actions</h3>
+<h4>Viewing Task Details</h4>
+<ul>
+<li><strong>Tap any task card</strong> to open its detailed view, where you can edit, complete, or delete it.</li>
+</ul>
+<h4>Exporting Tasks</h4>
+<p><em>(Only available in the &quot;Completed&quot; filter)</em></p>
+<ul>
+<li><p>Tap the <strong>Cloud Upload</strong> icon in the top right header.</p>
+</li>
+<li><p>This generates a CSV file of your completed tasks and uploads it to your Google Drive.</p>
+</li>
+<li><p>You will be asked to sign in to your Google account.</p>
+</li>
+<li><p>You will receive a link to view the file upon success.</p>
+</li>
+</ul>
+</section>
+<hr />
+<section class="doc-section" id="task-details-screen">
+<div class="doc-section-header">
+<span class="doc-section-number">04</span>
+<h2>Task Details Screen</h2>
+</div>
+<h3>Overview</h3>
+<p>The <strong>Task Details Screen</strong> provides a comprehensive view of a specific task, showing all its associated information and allowing for management actions.</p>
+<h3>Accessing the Screen</h3>
+<ul>
+<li>Tap on any <strong>Task Card</strong> from the <strong>Task List Screen</strong> or <strong>Calendar Screen</strong>.</li>
+</ul>
+<p><div class="doc-screenshot">
+  <div class="doc-screenshot-toolbar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="label">Screenshot</span>
+  </div>
+  <img src="../images-user-manual/details.png" alt="Task Details Screen" loading="lazy" />
+</div></p>
+<h3>Features</h3>
+<ul>
+<li><p><strong>Header</strong>: Contains the &quot;Back&quot; button, title, and buttons for <strong>Screen Capture</strong> and <strong>Edit</strong> (Pencil icon).</p>
+</li>
+<li><p><strong>Task Information</strong>: Displays the task&#39;s Title, Status, and Priority level.</p>
+</li>
+<li><p><strong>Description &amp; Notes</strong>: content of the description and any added comments.</p>
+</li>
+<li><p><strong>Financial Details</strong>: Bill amount and currency (if applicable).</p>
+</li>
+<li><p><strong>Dates</strong>: Created date, Due date, and Completed date.</p>
+</li>
+<li><p><strong>Contact Card</strong>: If a contact is linked, their details are shown here.</p>
+</li>
+</ul>
+<h3>Actions</h3>
+<ul>
+<li><p><strong>Mark Complete</strong>: Tap the green button to finish the task.</p>
+</li>
+<li><p><strong>Edit Task</strong>: Tap the &quot;Edit Task&quot; button (if pending) or the pencil icon to modify the task.</p>
+</li>
+<li><p><strong>Delete Task</strong>: Tap the red &quot;Delete Task&quot; button to permanently remove the item.</p>
+</li>
+</ul>
+</section>
+<hr />
+<section class="doc-section" id="edit-task-screen">
+<div class="doc-section-header">
+<span class="doc-section-number">05</span>
+<h2>Edit Task Screen</h2>
+</div>
+<h3>Overview</h3>
+<p>The <strong>Edit Task Screen</strong> allows you to update or correct information for an existing task. It works similarly to the Create Task Screen but comes pre-filled with the task&#39;s current data.</p>
+<h3>Accessing the Screen</h3>
+<ul>
+<li>From the <strong>Task Details Screen</strong>, tap the <strong>Pencil icon</strong> in the top header or the <strong>&quot;Edit Task&quot; button</strong> at the bottom of the details view.</li>
+</ul>
+<p><div class="doc-screenshot">
+  <div class="doc-screenshot-toolbar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="label">Screenshot</span>
+  </div>
+  <img src="../images-user-manual/edit-1.png" alt="Edit Task Screen 1" loading="lazy" />
+</div></p>
+<p><div class="doc-screenshot">
+  <div class="doc-screenshot-toolbar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="label">Screenshot</span>
+  </div>
+  <img src="../images-user-manual/edit-2.png" alt="Edit Task Screen 2" loading="lazy" />
+</div></p>
+<h3>Features</h3>
+<ul>
+<li><p><strong>Header</strong>: Contains the &quot;Back&quot; button, title, and a <strong>Screen Capture</strong> (camera icon) button.</p>
+</li>
+<li><p><strong>Pre-filled Fields</strong>: All fields (Title, Description, Priority, Due Date, etc.) are populated with the existing data.</p>
+</li>
+<li><p><strong>Status Indicator</strong>: Shows the current status of the task (e.g., Pending).</p>
+</li>
+<li><p><strong>Modifiable Fields</strong>:</p>
+<ul>
+<li><p><strong>Title &amp; Description</strong>: Edit text or use voice dictation.</p>
+</li>
+<li><p><strong>Priority</strong>: Change the urgency level.</p>
+</li>
+<li><p><strong>Dates &amp; Reminders</strong>: Update the deadline or notification settings.</p>
+</li>
+<li><p><strong>Financials</strong>: Adjust the bill amount or currency.</p>
+</li>
+<li><p><strong>Contacts</strong>: specific contact can be linked or removed.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Actions</h3>
+<ul>
+<li><p><strong>Update Task</strong>: Tap the solid button to save your changes.</p>
+</li>
+<li><p><strong>Update &amp; Mark Complete</strong>: Tap the outlined button to save changes and immediately mark the task as finished.</p>
+</li>
+<li><p><strong>Cancel</strong>: Tap the &quot;Cancel&quot; text button to discard changes and return to the details view.</p>
+</li>
+</ul>
+</section>
+<hr />
+<section class="doc-section" id="calendar-screen">
+<div class="doc-section-header">
+<span class="doc-section-number">06</span>
+<h2>Calendar Screen</h2>
+</div>
+<h3>Overview</h3>
+<p>The <strong>Calendar Screen</strong> offers a visual overview of your schedule, allowing you to plan ahead and quickly identify busy days.</p>
+<h3>Accessing the Screen</h3>
+<ul>
+<li>Tap the <strong>&quot;Calendar&quot;</strong> icon on the bottom navigation bar.</li>
+</ul>
+<p><div class="doc-screenshot">
+  <div class="doc-screenshot-toolbar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="label">Screenshot</span>
+  </div>
+  <img src="../images-user-manual/calendar.png" alt="Calendar Screen" loading="lazy" />
+</div></p>
+<h3>Features</h3>
+<h4>1. Monthly View</h4>
+<ul>
+<li><p>Swipe left or right to switch between months.</p>
+</li>
+<li><p><strong>Dots</strong> under dates indicate scheduled tasks:</p>
+<ul>
+<li><p><strong>Red Dot</strong>: Indicates overdue tasks or high-priority items.</p>
+</li>
+<li><p><strong>Blue/Green Dot</strong>: Indicates scheduled or completed tasks.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>2. Date Selection</h4>
+<ul>
+<li><p>Tap any date on the calendar to select it. The selected date is highlighted.</p>
+</li>
+<li><p>The list below the calendar updates to show tasks for that specific day.</p>
+</li>
+</ul>
+<h4>3. Daily Task List</h4>
+<p>Below the calendar, you will see the &quot;Tasks Due&quot; section:</p>
+<ul>
+<li><p><strong>Title</strong>: Shows the currently selected date (e.g., &quot;Monday, February 10, 2026&quot;).</p>
+</li>
+<li><p><strong>Content</strong>: Displays a list of:</p>
+<ul>
+<li><p><strong>Overdue Tasks</strong>: Tasks from previous dates that are still pending.</p>
+</li>
+<li><p><strong>Due Today</strong>: Tasks specifically scheduled for the selected date.</p>
+</li>
+</ul>
+<p>  <em>Note: Completed tasks are hidden from this view to help you focus on what needs to be done.</em></p>
+</li>
+</ul>
+<h3>Actions</h3>
+<ul>
+<li><strong>Open Task</strong>: Tap any task card in the list to view or edit its details.</li>
+</ul>
+<hr>
+</section>
+<hr />
+<section class="doc-section" id="dashboard-screen">
+<div class="doc-section-header">
+<span class="doc-section-number">07</span>
+<h2>Dashboard Screen</h2>
+</div>
+<h3>Overview</h3>
+<p>The <strong>Dashboard Screen</strong> provides deep insights into your productivity and financial tracking over time.</p>
+<h3>Accessing the Screen</h3>
+<ul>
+<li>Tap the <strong>&quot;Dashboard&quot; (Chart)</strong> icon on the bottom navigation bar.</li>
+</ul>
+<p><div class="doc-screenshot">
+  <div class="doc-screenshot-toolbar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="label">Screenshot</span>
+  </div>
+  <img src="../images-user-manual/dashboard.png" alt="Dashboard Screen" loading="lazy" />
+</div></p>
+<h3>Features</h3>
+<h4>1. Quick Stats &amp; Alerts</h4>
+<ul>
+<li><p><strong>Overdue Alert</strong>: If you have missed deadlines, a red banner appears at the top.</p>
+</li>
+<li><p><strong>Statistics Grid</strong>:</p>
+<ul>
+<li><p><strong>Total Tasks</strong>: The all-time count of tasks you&#39;ve created.</p>
+</li>
+<li><p><strong>Completed</strong>: Number of finished tasks.</p>
+</li>
+<li><p><strong>Pending</strong>: Number of active tasks remaining.</p>
+</li>
+<li><p><strong>Completion Rate</strong>: Your efficiency score as a percentage.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>2. Financial Overview</h4>
+<p>Track expenses related to your tasks (e.g., bills, shopping, project costs).</p>
+<ul>
+<li><p><strong>Currency Selector</strong>: Tap the button (e.g., &quot;$ US Dollar&quot;) to switch views between currencies.The default currency is your local currency.</p>
+</li>
+<li><p><strong>Total Billing</strong>: Displays the total monthly amount for the selected currency.</p>
+</li>
+<li><p><strong>Monthly Chart</strong>: A bar graph showing your spending trends over recent months.</p>
+</li>
+<li><p><strong>Category Breakdown</strong>: A pie chart visualizing where your money is going.</p>
+</li>
+</ul>
+<h4>3. Priority Breakdown</h4>
+<ul>
+<li><p>A list showing how your tasks are distributed across importance levels (Urgent, High, Medium, Low).</p>
+</li>
+<li><p>Helps you understand if you are overloaded with urgent tasks.</p>
+</li>
+</ul>
+<h4>4. App Info</h4>
+<ul>
+<li>Displays the current version of the app and storage method (Local Device).</li>
+</ul>
+</section>
+<hr />
+<section class="doc-section" id="settings-screen">
+<div class="doc-section-header">
+<span class="doc-section-number">08</span>
+<h2>Settings Screen</h2>
+</div>
+<h3>Overview</h3>
+<p>The <strong>Settings Screen</strong> allows you to customize the application to your preferences, manage data, and access developer tools.</p>
+<h3>Accessing the Screen</h3>
+<ul>
+<li>Tap the <strong>&quot;Settings&quot; (Gear)</strong> icon on the right side of the bottom navigation bar.</li>
+</ul>
+<p><div class="doc-screenshot">
+  <div class="doc-screenshot-toolbar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <span class="label">Screenshot</span>
+  </div>
+  <img src="../images-user-manual/settings.png" alt="Settings Screen" loading="lazy" />
+</div></p>
+<h3>Features</h3>
+<h4>1. Appearance</h4>
+<ul>
+<li><p><strong>Theme</strong>: Toggle between <strong>Light Mode</strong> and <strong>Dark Mode</strong>.</p>
+<ul>
+<li><p><em>Light Mode</em>: Best for bright environments.</p>
+</li>
+<li><p><em>Dark Mode</em>: Reduces eye strain in low-light conditions.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>2. Notifications &amp; General</h4>
+<ul>
+<li><strong>Show Welcome Screen</strong>: Toggle this switch to enable or disable the introductory slideshow when the app starts.</li>
+</ul>
+<h4>3. Language</h4>
+<ul>
+<li>Use the language switcher to change the application&#39;s interface language (e.g., English, Hungarian, German, French).</li>
+</ul>
+<h4>5. Developer &amp; About</h4>
+<ul>
+<li><p><strong>Preview Welcome Screen</strong>: Replays the onboarding tutorial.</p>
+</li>
+<li><p><strong>About</strong>: Displays the app version (1.0.0), credits, and copyright information.</p>
+</li>
+</ul>
+</section>
+
+
+    </div>
+  </main>
+
+  <div class="doc-lightbox">
+    <button class="doc-lightbox-close" aria-label="Close">?</button>
+    <img src="" alt="" />
+  </div>
+  <script src="doc-theme.js" defer></script>
+</body>
+</html>
