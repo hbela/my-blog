@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   description: "Thoughts, tutorials, and articles on web development and technology.",
 }
 
+function readingTime(content: string): string {
+  const words = content.trim().split(/\s+/).length
+  const minutes = Math.max(1, Math.round(words / 200))
+  return `${minutes} min read`
+}
+
 export default async function BlogPage() {
   const posts = await prisma.post.findMany({
     where: { published: true },
@@ -78,6 +84,8 @@ export default async function BlogPage() {
                     <time style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                       {post.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </time>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>·</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{readingTime(post.content)}</span>
                   </div>
                 </div>
                 <div style={{
