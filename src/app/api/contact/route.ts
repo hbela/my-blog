@@ -13,8 +13,8 @@ export async function POST(req: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'Portfolio <onboarding@resend.dev>', // Update for production
-      to: process.env.CONTACT_EMAIL || "admin@example.com",
+      from: 'support@tanarock.hu', // Update for production
+      to: process.env.CONTACT_EMAIL || "support@tanarock.hu",
       subject: `New message from ${name}`,
       replyTo: email,
       text: `Message from ${name} (${email}):\n\n${message}`,
