@@ -1,23 +1,18 @@
 # Stage 1: Install dependencies
 FROM node:20-alpine AS deps
-RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY package.json package-lock.json ./
 COPY prisma ./prisma
-RUN pnpm install --frozen-lockfile --shamefully-hoist
+RUN npm ci
 
 # Stage 2: Build
 FROM node:20-alpine AS builder
-RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+RUN npx prisma generate
+RUN npm run build
 
-# Generate Prisma client before build
-RUN pnpm prisma generate
-
-# Build the app
-RUN pnpm build
 
 # Stage 3: Production runner
 FROM node:20-alpine AS runner
