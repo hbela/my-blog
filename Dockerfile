@@ -19,11 +19,6 @@ RUN pnpm prisma generate
 # Build the app
 RUN pnpm build
 
-# Debug: find exact Prisma paths
-RUN echo "=== Finding Prisma files ===" && \
-    find /app/node_modules -path "*/@prisma/client" -type d && \
-    find /app/node_modules -path "*/.prisma" -type d
-
 # Stage 3: Production runner
 FROM node:20-alpine AS runner
 RUN corepack enable && corepack prepare pnpm@latest --activate
