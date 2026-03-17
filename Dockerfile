@@ -12,6 +12,11 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+# Generate Prisma client before build
+RUN pnpm prisma generate
+
+# Build the app
 RUN pnpm build
 
 # Stage 3: Production runner
@@ -33,10 +38,11 @@ COPY --from=builder /app/public ./public
 # Prisma: schema + migrations (for migrate deploy at runtime)
 COPY --from=builder /app/prisma ./prisma
 
-# Prisma query engine binaries (not included in standalone JS bundle)
+# Prisma client and binaries
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
+# Optional: only copy prisma CLI if needed at runtime
+# COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
 
 # Entrypoint
 COPY --from=builder /app/entrypoint.sh ./entrypoint.sh
