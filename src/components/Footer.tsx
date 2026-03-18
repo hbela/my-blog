@@ -15,7 +15,7 @@ export default function Footer() {
           <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Building things for the web.</p>
         </div>
         <nav style={{ display: 'flex', gap: '1.5rem' }}>
-          {[['/', 'Home'], ['/blog', 'Blog'], ['/projects', 'Projects'], ['/contact', 'Contact']].map(([href, label]) => (
+          {[['/', 'Home'], ['/blog', 'Blog'], ['/projects', 'Projects'], ['/contact', 'Contact'], ['/privacy-policy', 'Privacy Policy']].map(([href, label]) => (
             <Link key={href} href={href} className="footer-link">
               {label}
             </Link>

@@ -41,5 +41,6 @@ yarn-error.log*
 next-env.d.ts
 docs/DEPLOY_GUIDE.md
 docs/DEPLOY_LOG.md
+docs/DEPLOY_BEST_PRACTICES.md
 
 /src/generated/prisma
