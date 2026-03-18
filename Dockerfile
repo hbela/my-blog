@@ -47,6 +47,7 @@ COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 # Prisma CLI + dotenv (needed for prisma migrate deploy at runtime)
 COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
 COPY --from=builder /app/node_modules/dotenv ./node_modules/dotenv
+COPY --from=builder /app/node_modules/.bin ./node_modules/.bin
 
 # Entrypoint
 COPY --from=builder /app/entrypoint.sh ./entrypoint.sh
