@@ -38,11 +38,15 @@ COPY --from=builder /app/public ./public
 # Prisma: schema + migrations (for migrate deploy at runtime)
 COPY --from=builder /app/prisma ./prisma
 
+# Prisma config (Prisma 7 reads datasource URL from here)
+COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
+
 # Prisma client and binaries
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-# Optional: only copy prisma CLI if needed at runtime
-# COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
+# Prisma CLI + dotenv (needed for prisma migrate deploy at runtime)
+COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
+COPY --from=builder /app/node_modules/dotenv ./node_modules/dotenv
 
 # Entrypoint
 COPY --from=builder /app/entrypoint.sh ./entrypoint.sh
