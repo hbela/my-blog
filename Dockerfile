@@ -48,6 +48,8 @@ COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
 COPY --from=builder /app/node_modules/dotenv ./node_modules/dotenv
 COPY --from=builder /app/node_modules/.bin ./node_modules/.bin
+# pnpm virtual store — symlinks in node_modules/@prisma point here
+COPY --from=builder /app/node_modules/.pnpm ./node_modules/.pnpm
 
 # Entrypoint
 COPY --from=builder /app/entrypoint.sh ./entrypoint.sh
