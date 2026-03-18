@@ -4,7 +4,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY prisma ./prisma
-RUN pnpm install --frozen-lockfile --shamefully-hoist
+RUN pnpm install --frozen-lockfile --shamefully-hoist --ignore-scripts
 
 # Stage 2: Build
 FROM node:20-alpine AS builder
