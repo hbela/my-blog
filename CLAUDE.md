@@ -2,13 +2,13 @@
 
 ## Project Overview
 
-Personal portfolio and blog application built with Next.js 16 (App Router), React 19, Prisma ORM, and NextAuth v4. Features a markdown-based blog, projects showcase, contact form, and an admin dashboard.
+Personal portfolio and blog application built with Next.js 16.2.1 (App Router), React 19, Prisma ORM, and NextAuth v4. Features a markdown-based blog, projects showcase, contact form, and an admin dashboard.
 
 ## Stack
 
 | Layer | Technology |
 |---|---|
-| Framework | Next.js 16 (App Router), React 19 |
+| Framework | Next.js 16.2.1 (App Router), React 19 |
 | Language | TypeScript |
 | Styling | Tailwind CSS v4, custom CSS design tokens |
 | Database | PostgreSQL via Prisma ORM v6 |
