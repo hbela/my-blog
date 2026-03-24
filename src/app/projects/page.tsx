@@ -3,6 +3,8 @@ import Link from "next/link"
 import Image from "next/image"
 import type { Metadata } from "next"
 
+export const revalidate = 604800 // revalidate at most once per week; busted immediately on publish
+
 export const metadata: Metadata = {
   title: "Projects",
   description: "A showcase of projects I have built — from web apps to open-source tools.",

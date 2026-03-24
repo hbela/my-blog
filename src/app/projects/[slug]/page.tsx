@@ -6,6 +6,16 @@ import remarkGfm from "remark-gfm"
 import Image from "next/image"
 import { marked } from "marked"
 
+export const revalidate = 604800 // revalidate at most once per week; busted immediately on publish
+
+export async function generateStaticParams() {
+  const projects = await prisma.project.findMany({
+    where: { published: true },
+    select: { slug: true },
+  })
+  return projects.map((p) => ({ slug: p.slug }))
+}
+
 // Custom logic for Taskmanager project
 function parseTaskmanagerContent(markdown: string) {
   const renderer = new marked.Renderer() as any;

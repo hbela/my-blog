@@ -2,7 +2,7 @@
 import { prisma } from "@/lib/prisma"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
-import { revalidatePath } from "next/cache"
+import { revalidatePath, revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 
 export async function savePost(id: string | null, data: FormData) {
@@ -35,8 +35,10 @@ export async function savePost(id: string | null, data: FormData) {
     })
   }
 
+  revalidateTag("posts")
   revalidatePath("/admin/posts")
   revalidatePath("/blog")
+  revalidatePath(`/blog/${slug}`)
   redirect("/admin/posts")
 }
 
@@ -44,7 +46,10 @@ export async function deletePost(id: string) {
   const session = await getServerSession(authOptions)
   if (!session || session.user.role !== 'ADMIN') throw new Error("Unauthorized")
 
+  const post = await prisma.post.findUnique({ where: { id }, select: { slug: true } })
   await prisma.post.delete({ where: { id } })
+  revalidateTag("posts")
   revalidatePath("/admin/posts")
   revalidatePath("/blog")
+  if (post) revalidatePath(`/blog/${post.slug}`)
 }

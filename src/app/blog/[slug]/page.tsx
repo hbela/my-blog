@@ -8,6 +8,16 @@ import Image from "next/image"
 import Link from "next/link"
 import type { Metadata } from "next"
 
+export const revalidate = 604800 // revalidate at most once per week; busted immediately on publish
+
+export async function generateStaticParams() {
+  const posts = await prisma.post.findMany({
+    where: { published: true },
+    select: { slug: true },
+  })
+  return posts.map((p) => ({ slug: p.slug }))
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const post = await prisma.post.findUnique({ where: { slug } })
