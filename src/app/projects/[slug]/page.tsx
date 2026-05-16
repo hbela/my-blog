@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import Image from "next/image"
 import { marked } from "marked"
+import { parseDocThemeMarkdown } from "@/lib/doc-theme"
 
 export const revalidate = 604800 // revalidate at most once per week; busted immediately on publish
 
@@ -64,6 +65,22 @@ function parseTaskmanagerContent(markdown: string) {
   return html;
 }
 
+// Rewrites external finance.appointer.hu/{privacy,terms} links to the local
+// styled pages we render under /projects/finance-manager/{privacy,terms}.
+function rewriteFinanceManagerLegalLinks(markdown: string) {
+  return markdown
+    .replace(
+      /https?:\/\/finance\.appointer\.hu\/privacy/g,
+      "/projects/finance-manager/privacy",
+    )
+    .replace(
+      /https?:\/\/finance\.appointer\.hu\/terms/g,
+      "/projects/finance-manager/terms",
+    )
+    .replace(/finance\.appointer\.hu\/privacy/g, "/projects/finance-manager/privacy")
+    .replace(/finance\.appointer\.hu\/terms/g, "/projects/finance-manager/terms")
+}
+
 export default async function ProjectDetailPage({
   params,
 }: {
@@ -76,6 +93,69 @@ export default async function ProjectDetailPage({
 
   if (!project) {
     notFound()
+  }
+
+  if (project.slug === 'finance-manager') {
+    const rewritten = rewriteFinanceManagerLegalLinks(project.content as string);
+    const { heroTitle, heroSubtitleHtml, html, sidebarItems } = parseDocThemeMarkdown(rewritten);
+
+    const [titleLead, ...titleTail] = heroTitle.split(/\s+[—–-]\s+/);
+    const titleSuffix = titleTail.join(" — ");
+
+    return (
+      <div className="taskmanager-doc-container">
+        <link rel="stylesheet" href="/doc-theme/doc-theme.css" />
+
+        <div className="doc-progress-bar"><div className="doc-progress-bar-inner"></div></div>
+        <button className="doc-menu-toggle" aria-label="Toggle menu">☰</button>
+        <div className="doc-overlay"></div>
+
+        <aside className="doc-sidebar">
+          <div className="doc-sidebar-brand">
+            <h1><span className="brand-icon">F</span> Finance Manager</h1>
+            <span className="brand-subtitle">User Guide v1.0</span>
+          </div>
+          <nav className="doc-sidebar-nav">
+            <div className="doc-nav-group">
+              <div className="doc-nav-group-title">Contents</div>
+              {sidebarItems.map((item) => (
+                <a key={item.id} href={`#${item.id}`}>
+                  <span className="doc-nav-number">{item.number}</span>
+                  <span dangerouslySetInnerHTML={{ __html: item.text }} />
+                </a>
+              ))}
+            </div>
+          </nav>
+          <div className="doc-sidebar-footer">© 2026 Standalone Finance Management</div>
+        </aside>
+
+        <main className="doc-main">
+          <header className="doc-header">
+            <div className="doc-header-title"><strong>Finance Manager</strong>&nbsp; · &nbsp;Documentation</div>
+          </header>
+          <div className="doc-content">
+            <div className="doc-hero">
+              <div className="doc-hero-badge">📖 User Guide</div>
+              <h1>
+                {titleLead}
+                {titleSuffix && (<><br />{titleSuffix}</>)}
+              </h1>
+              {heroSubtitleHtml && (
+                <p dangerouslySetInnerHTML={{ __html: heroSubtitleHtml }} />
+              )}
+            </div>
+
+            <div dangerouslySetInnerHTML={{ __html: html }} />
+          </div>
+        </main>
+
+        <div className="doc-lightbox">
+          <button className="doc-lightbox-close" aria-label="Close">✕</button>
+          <img alt="" />
+        </div>
+        <script src="/doc-theme/doc-theme.js" async defer></script>
+      </div>
+    )
   }
 
   if (project.slug === 'taskmanager') {
