@@ -40,6 +40,28 @@ const LEGAL_DOCS: Record<string, Record<string, LegalDocConfig>> = {
       headerLabel: "Terms of Service",
     },
   },
+  taskmanager: {
+    privacy: {
+      file: "docs/taskmanager/legal/PRIVACY_POLICY.md",
+      badge: "🔒 Privacy",
+      brandIcon: "T",
+      brandName: "Taskmanager",
+      brandSubtitle: "Privacy Policy",
+      navGroupTitle: "Sections",
+      footer: "© 2026 Standalone Task Manager · Elyscom",
+      headerLabel: "Privacy Policy",
+    },
+    terms: {
+      file: "docs/taskmanager/legal/TERMS_OF_SERVICE.md",
+      badge: "📄 Terms",
+      brandIcon: "T",
+      brandName: "Taskmanager",
+      brandSubtitle: "Terms of Service",
+      navGroupTitle: "Sections",
+      footer: "© 2026 Standalone Task Manager · Elyscom",
+      headerLabel: "Terms of Service",
+    },
+  },
 }
 
 export function generateStaticParams() {
