@@ -35,7 +35,7 @@ export async function savePost(id: string | null, data: FormData) {
     })
   }
 
-  revalidateTag("posts")
+  revalidateTag("posts", "default")
   revalidatePath("/admin/posts")
   revalidatePath("/blog")
   revalidatePath(`/blog/${slug}`)
@@ -48,7 +48,7 @@ export async function deletePost(id: string) {
 
   const post = await prisma.post.findUnique({ where: { id }, select: { slug: true } })
   await prisma.post.delete({ where: { id } })
-  revalidateTag("posts")
+  revalidateTag("posts", "default")
   revalidatePath("/admin/posts")
   revalidatePath("/blog")
   if (post) revalidatePath(`/blog/${post.slug}`)

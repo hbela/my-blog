@@ -30,7 +30,7 @@ export async function saveProject(id: string | null, data: FormData) {
     })
   }
 
-  revalidateTag("projects")
+  revalidateTag("projects", "default")
   revalidatePath("/admin/projects")
   revalidatePath("/projects")
   revalidatePath(`/projects/${slug}`)
@@ -43,7 +43,7 @@ export async function deleteProject(id: string) {
 
   const project = await prisma.project.findUnique({ where: { id }, select: { slug: true } })
   await prisma.project.delete({ where: { id } })
-  revalidateTag("projects")
+  revalidateTag("projects", "default")
   revalidatePath("/admin/projects")
   revalidatePath("/projects")
   if (project) revalidatePath(`/projects/${project.slug}`)
