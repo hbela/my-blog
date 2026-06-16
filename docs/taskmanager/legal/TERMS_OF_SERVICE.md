@@ -199,4 +199,4 @@ If you obtained the App from the Apple App Store, the following additional terms
 ## 19. Contact
 
 **Elyscom**
-Email: **hajzerbela@gmail.com**
+Email: **support@tanarock.hu**

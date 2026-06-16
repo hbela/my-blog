@@ -4,8 +4,10 @@ import { notFound } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import Image from "next/image"
+import Link from "next/link"
 import { marked } from "marked"
 import { parseDocThemeMarkdown } from "@/lib/doc-theme"
+import MermaidRenderer from "@/components/MermaidRenderer"
 
 export const revalidate = 604800 // revalidate at most once per week; busted immediately on publish
 
@@ -59,7 +61,17 @@ function parseTaskmanagerContent(markdown: string) {
   };
 
   marked.use({ renderer });
-  let html = marked.parse(markdown);
+  let html = marked.parse(markdown) as string;
+  html = html
+    .replace(
+      /\s*<li>\s*<h4>5\. Privacy Policy<a href="url">\s*\/projects\/taskmanager\/privacy<\/a><\/h4>\s*<\/li>/g,
+      "",
+    )
+    .replace(
+      /\s*<li>\s*<h4>6\. Terms of Service\s*<a href="url">\s*\/projects\/taskmanager\/terms<\/a><\/h4>\s*<\/li>/g,
+      "",
+    )
+    .replace(/\s*<li>\s*<\/li>/g, "");
   // Close the last section
   if (sectionNumber > 0) html += `</section>\n`;
   return html;
@@ -158,6 +170,72 @@ export default async function ProjectDetailPage({
     )
   }
 
+  if (project.slug === 'sunshine-dental') {
+    const { heroTitle, heroSubtitleHtml, html, sidebarItems } = parseDocThemeMarkdown(
+      project.content as string,
+      { imagesAsScreenshots: true },
+    );
+
+    const [titleLead, ...titleTail] = heroTitle.split(/\s+[—–-]\s+/);
+    const titleSuffix = titleTail.join(" — ");
+
+    return (
+      <div className="taskmanager-doc-container">
+        <link rel="stylesheet" href="/doc-theme/doc-theme.css" />
+
+        <div className="doc-progress-bar"><div className="doc-progress-bar-inner"></div></div>
+        <button className="doc-menu-toggle" aria-label="Toggle menu">☰</button>
+        <div className="doc-overlay"></div>
+
+        <aside className="doc-sidebar">
+          <div className="doc-sidebar-brand">
+            <h1><span className="brand-icon">S</span> Sunshine Dental</h1>
+            <span className="brand-subtitle">User Guide v1.0</span>
+          </div>
+          <nav className="doc-sidebar-nav">
+            <div className="doc-nav-group">
+              <div className="doc-nav-group-title">Contents</div>
+              {sidebarItems.map((item) => (
+                <a key={item.id} href={`#${item.id}`}>
+                  <span className="doc-nav-number">{item.number}</span>
+                  <span dangerouslySetInnerHTML={{ __html: item.text }} />
+                </a>
+              ))}
+            </div>
+          </nav>
+          <div className="doc-sidebar-footer">© 2026 Sunshine Dental</div>
+        </aside>
+
+        <main className="doc-main">
+          <header className="doc-header">
+            <div className="doc-header-title"><strong>Sunshine Dental</strong>&nbsp; · &nbsp;Documentation</div>
+          </header>
+          <div className="doc-content">
+            <div className="doc-hero">
+              <div className="doc-hero-badge">📖 User Guide</div>
+              <h1>
+                {titleLead}
+                {titleSuffix && (<><br />{titleSuffix}</>)}
+              </h1>
+              {heroSubtitleHtml && (
+                <p dangerouslySetInnerHTML={{ __html: heroSubtitleHtml }} />
+              )}
+            </div>
+
+            <div dangerouslySetInnerHTML={{ __html: html }} />
+          </div>
+        </main>
+
+        <div className="doc-lightbox">
+          <button className="doc-lightbox-close" aria-label="Close">✕</button>
+          <img alt="" />
+        </div>
+        <script src="/doc-theme/doc-theme.js" async defer></script>
+        <MermaidRenderer />
+      </div>
+    )
+  }
+
   if (project.slug === 'taskmanager') {
     const htmlContent = parseTaskmanagerContent(project.content as string);
     
@@ -186,6 +264,7 @@ export default async function ProjectDetailPage({
               <a href="#calendar-screen"><span className="doc-nav-number">06</span> Calendar</a>
               <a href="#dashboard-screen"><span className="doc-nav-number">07</span> Dashboard</a>
               <a href="#settings-screen"><span className="doc-nav-number">08</span> Settings</a>
+              <a href="#legal"><span className="doc-nav-number">09</span> Legal</a>
             </div>
           </nav>
           <div className="doc-sidebar-footer">© 2026 Taskmanager</div>
@@ -203,6 +282,32 @@ export default async function ProjectDetailPage({
             </div>
 
             <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+
+            <section className="doc-section" id="legal">
+              <div className="doc-section-header">
+                <span className="doc-section-number">09</span>
+                <h2>Legal</h2>
+              </div>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Privacy Policy:</strong>{" "}
+                    <Link href="/projects/taskmanager/privacy">/projects/taskmanager/privacy</Link>
+                    {" "}-- what data the app handles, where it lives, and how optional services process it.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Terms of Service:</strong>{" "}
+                    <Link href="/projects/taskmanager/terms">/projects/taskmanager/terms</Link>
+                    {" "}-- the rules for using the app, subscriptions, user content, disclaimers, and liability limits.
+                  </p>
+                </li>
+              </ul>
+              <p>
+                Plain-language summary: your tasks are stored locally by default, optional online features use the providers described in the policy, and the app is provided as a productivity tool. Keep your own backups and do not rely on notifications for critical health, safety, or legal deadlines.
+              </p>
+            </section>
 
           </div>
         </main>

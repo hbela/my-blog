@@ -15,7 +15,7 @@ The App is published by **Elyscom**.
 
 - **Application name:** Standalone Task Manager
 - **Android package:** `com.standalonetaskmanager.app`
-- **Contact:** hajzerbela@gmail.com
+- **Contact:** support@tanarock.hu
 
 For any privacy-related question, request, or complaint, please contact us at the email above.
 
@@ -144,7 +144,7 @@ Depending on where you live (e.g., the EEA, UK, California, Brazil), you may hav
 - Withdraw consent at any time, where processing is based on consent.
 - Lodge a complaint with your local data protection authority.
 
-To exercise any of these rights, email us at **hajzerbela@gmail.com**. We will respond within 30 days. We may ask you to verify your identity before fulfilling the request.
+To exercise any of these rights, email us at **support@tanarock.hu**. We will respond within 30 days. We may ask you to verify your identity before fulfilling the request.
 
 You can also delete most of your data directly:
 
@@ -183,4 +183,4 @@ We may update this Privacy Policy from time to time. When we do, we will update 
 If you have questions, concerns, or requests regarding this Privacy Policy or your personal information:
 
 **Elyscom**
-Email: **hajzerbela@gmail.com**
+Email: **support@tanarock.hu**

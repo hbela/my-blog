@@ -10,6 +10,25 @@ export const metadata: Metadata = {
   description: "A showcase of projects I have built — from web apps to open-source tools.",
 }
 
+function getProjectCardDetails(project: {
+  slug: string
+  excerpt: string | null
+  image: string | null
+}) {
+  if (project.slug === "finance-manager") {
+    return {
+      excerpt:
+        "A standalone finance management app to track accounts, transactions, budgets, recurring bills, and forecasts - works locally, supports bank import flows, smart categorization, CSV export, and clear dashboards for spending insights.",
+      image: "/finance-manager.png",
+    }
+  }
+
+  return {
+    excerpt: project.excerpt,
+    image: project.image,
+  }
+}
+
 export default async function ProjectsPage() {
   const projects = await prisma.project.findMany({
     where: { published: true },
@@ -38,7 +57,10 @@ export default async function ProjectsPage() {
         gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
         gap: '1.5rem',
       }}>
-        {projects.map((project, i) => (
+        {projects.map((project, i) => {
+          const cardDetails = getProjectCardDetails(project)
+
+          return (
           <Link key={project.id} href={`/projects/${project.slug}`} style={{ textDecoration: 'none' }}>
             <article style={{
               background: 'var(--bg-card)',
@@ -55,8 +77,8 @@ export default async function ProjectsPage() {
             >
               {/* Image / placeholder */}
               <div style={{ position: 'relative', height: '200px', flexShrink: 0, overflow: 'hidden' }}>
-                {project.image ? (
-                  <Image src={project.image} alt={project.title} fill style={{ objectFit: 'cover' }}
+                {cardDetails.image ? (
+                  <Image src={cardDetails.image} alt={project.title} fill style={{ objectFit: 'cover' }}
                     className="project-img" />
                 ) : (
                   <div style={{
@@ -83,12 +105,12 @@ export default async function ProjectsPage() {
                 }}>
                   {project.title}
                 </h2>
-                {project.excerpt && (
+                {cardDetails.excerpt && (
                   <p style={{
                     color: 'var(--text-secondary)', fontSize: '0.875rem',
                     lineHeight: 1.65, marginBottom: '1rem', flex: 1,
                   }}>
-                    {project.excerpt}
+                    {cardDetails.excerpt}
                   </p>
                 )}
                 {project.technologies && (
@@ -103,7 +125,8 @@ export default async function ProjectsPage() {
               </div>
             </article>
           </Link>
-        ))}
+          )
+        })}
 
         {projects.length === 0 && (
           <div style={{

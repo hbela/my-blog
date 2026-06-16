@@ -4,6 +4,9 @@ export type SidebarItem = { id: string; text: string; number: string }
 
 export type ParseOptions = {
   stripLeadingNumbers?: boolean
+  // Wrap standalone images in browser-chrome screenshot cards (with lightbox
+  // support via doc-theme.js). Off by default so existing docs are unaffected.
+  imagesAsScreenshots?: boolean
 }
 
 export type ParsedDoc = {
@@ -121,7 +124,40 @@ export function parseDocThemeMarkdown(
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
+    // Mermaid diagrams are rendered client-side by mermaid.js, which reads the
+    // element's textContent — escaped entities decode back to the literal
+    // source (incl. <br/> in node labels) so the browser doesn't pre-parse it.
+    if (lang === "mermaid") {
+      return `<pre class="mermaid">${escaped}</pre>\n`
+    }
     return `<div class="doc-code-block">${lang ? `<div class="code-header">${lang}</div>` : ""}<pre><code>${escaped}</code></pre></div>\n`
+  }
+
+  if (options.imagesAsScreenshots) {
+    // A standalone image becomes a block-level screenshot card; rendering it
+    // inside marked's default <p> wrapper would be invalid nesting (<div> in
+    // <p>), which the browser repairs and breaks hydration. Unwrap lone-image
+    // paragraphs so the card sits at the block level.
+    renderer.paragraph = function (token: any) {
+      if (token.tokens?.length === 1 && token.tokens[0].type === "image") {
+        return `${this.parser.parseInline(token.tokens)}\n`
+      }
+      return `<p>${this.parser.parseInline(token.tokens)}</p>\n`
+    }
+
+    renderer.image = function (token: any) {
+      const alt = (token.text || "") as string
+      const label = alt || "Screenshot"
+      return (
+        `<div class="doc-screenshot">` +
+        `<div class="doc-screenshot-toolbar">` +
+        `<span class="dot"></span><span class="dot"></span><span class="dot"></span>` +
+        `<span class="label">${label}</span>` +
+        `</div>` +
+        `<img src="${token.href}" alt="${alt}" loading="lazy" />` +
+        `</div>`
+      )
+    }
   }
 
   // The user-guide markdown uses `---` separators between sections; the H2
