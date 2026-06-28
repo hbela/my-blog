@@ -70,7 +70,21 @@ GOOGLE_CLIENT_ID      # Google OAuth app
 GOOGLE_CLIENT_SECRET
 RESEND_API_KEY        # Resend email service
 CONTACT_EMAIL         # Recipient for contact form emails
+IMPORT_API_SECRET     # Bearer token for POST /api/projects/import (machine-to-machine project upsert)
 ```
+
+## Importing projects via API
+
+`POST /api/projects/import` upserts a Project from generated markdown (used by
+external generators such as founder-sales-crm's `guide:publish` script — no
+manual paste into `/admin/projects/new`).
+
+- Auth: `Authorization: Bearer <IMPORT_API_SECRET>`.
+- Body (JSON): `{ slug, title, excerpt, technologies, image, content, published, docTheme, brandIcon }`.
+- `assets/screenshots/*` paths in `content` are rewritten to `/<slug>/*`; commit
+  those images under `public/<slug>/` so they ship in the Docker image.
+- Set `docTheme: true` to render with the doc-theme layout (sidebar, numbered
+  sections, screenshot cards) — no per-project page code required.
 
 ## Authentication
 
