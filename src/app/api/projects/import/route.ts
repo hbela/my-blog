@@ -85,7 +85,7 @@ export async function POST(req: Request) {
     create: { slug, ...data },
   })
 
-  revalidateTag("projects")
+  revalidateTag("projects", "default")
   revalidatePath("/projects")
   revalidatePath(`/projects/${slug}`)
 
