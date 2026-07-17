@@ -78,7 +78,11 @@ export default async function ProjectsPage() {
               {/* Image / placeholder */}
               <div style={{ position: 'relative', height: '200px', flexShrink: 0, overflow: 'hidden' }}>
                 {cardDetails.image ? (
-                  <Image src={cardDetails.image} alt={project.title} fill style={{ objectFit: 'cover' }}
+                  <Image src={cardDetails.image} alt={project.title} fill
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: project.slug.startsWith('sunshine-dental') ? 'top' : 'center',
+                    }}
                     className="project-img" />
                 ) : (
                   <div style={{
