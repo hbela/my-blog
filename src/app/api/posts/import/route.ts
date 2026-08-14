@@ -66,23 +66,30 @@ export async function POST(req: Request) {
     )
   }
 
+  const existing = await prisma.post.findUnique({
+    where: { slug },
+    select: { id: true, published: true },
+  })
+
   const data = {
     title,
     excerpt: body.excerpt ?? null,
     image: body.image ?? null,
     content,
-    published: body.published ?? false,
   }
 
-  const existing = await prisma.post.findUnique({
-    where: { slug },
-    select: { id: true },
-  })
+  // Omitting `published` means "leave it as it is", not "unpublish".
+  //
+  // This used to be `body.published ?? false`, which made a plain content
+  // correction take a live post down — the caller has to remember a field that
+  // has nothing to do with what they came to change. Retracting a post is a
+  // decision, so it now requires saying `published: false` out loud.
+  const published = body.published ?? existing?.published ?? false
 
   await prisma.post.upsert({
     where: { slug },
-    update: data,
-    create: { slug, ...data, authorId: author.id },
+    update: { ...data, published },
+    create: { slug, ...data, published, authorId: author.id },
   })
 
   revalidatePath("/blog")
