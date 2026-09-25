@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="990" viewBox="0 0 1400 990">
+  <defs>
+    <radialGradient id="glow" cx="0.82" cy="0.12" r="0.75">
+      <stop offset="0%" stop-color="#3fb950" stop-opacity="0.24"/>
+      <stop offset="55%" stop-color="#3fb950" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#3fb950" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.08" cy="0.95" r="0.6">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3fb950"/>
+      <stop offset="100%" stop-color="#3fb950" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="26" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="990" fill="#0d1117"/>
+  <rect width="1400" height="990" fill="url(#glow)"/>
+  <rect width="1400" height="990" fill="url(#glow2)"/>
+
+  <g transform="translate(0,48)">
+
+    <!-- header -->
+    <rect x="96" y="96" width="120" height="4" rx="2" fill="url(#rule)"/>
+
+    <text x="96" y="174" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700" fill="#e6edf3">A backup nobody has restored</text>
+    <text x="96" y="234" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700" fill="#e6edf3">is a hypothesis</text>
+    <text x="96" y="284" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" fill="#8b949e">A staging recovery drill on a server that owed the app nothing</text>
+
+    <!-- terminal -->
+    <g filter="url(#soft)">
+      <rect x="96" y="352" width="1208" height="474" rx="18" fill="#161b22" stroke="#3d444d" stroke-width="1.5"/>
+      <path d="M96 370 a18 18 0 0 1 18 -18 h1172 a18 18 0 0 1 18 18 v34 h-1208 z" fill="#21262d"/>
+      <line x1="96" y1="404" x2="1304" y2="404" stroke="#3d444d" stroke-width="1.5"/>
+      <circle cx="128" cy="378" r="7" fill="#f85149"/>
+      <circle cx="154" cy="378" r="7" fill="#d29922"/>
+      <circle cx="180" cy="378" r="7" fill="#3fb950"/>
+      <text x="652" y="385" text-anchor="middle" font-family="Consolas, monospace" font-size="19" fill="#6e7681">recovery-drill &#8212; clean host @ hetzner</text>
+    </g>
+
+    <!-- command -->
+    <text x="140" y="462" font-family="Consolas, monospace" font-size="26" fill="#3fb950">$</text>
+    <text x="172" y="462" font-family="Consolas, monospace" font-size="26" fill="#e6edf3">verify-recovery --host recovery-drill --snapshot latest</text>
+
+    <!-- rows -->
+    <g font-family="Consolas, monospace" font-size="24">
+      <text x="172" y="524" fill="#8b949e">encryption keys</text>
+      <text x="560" y="524" fill="#3fb950">match staging</text>
+      <text x="880" y="524" fill="#6e7681">via independent vault</text>
+
+      <text x="172" y="566" fill="#8b949e">images</text>
+      <text x="560" y="566" fill="#3fb950">rebuilt</text>
+      <text x="880" y="566" fill="#6e7681">from source, no cache</text>
+
+      <text x="172" y="608" fill="#8b949e">database</text>
+      <text x="560" y="608" fill="#3fb950">restored</text>
+      <text x="880" y="608" fill="#6e7681">R2 snapshot, decrypts</text>
+
+      <text x="172" y="650" fill="#8b949e">redis</text>
+      <text x="560" y="650" fill="#3fb950">rebuilt</text>
+      <text x="880" y="650" fill="#6e7681">job reconstructed, twice</text>
+
+      <rect x="140" y="672" width="1124" height="46" rx="8" fill="#3fb950" fill-opacity="0.10"/>
+      <rect x="140" y="672" width="4" height="46" rx="2" fill="#3fb950"/>
+      <text x="172" y="704" fill="#f0f6fc">browser login</text>
+      <text x="560" y="704" fill="#3fb950">10/10 checks</text>
+      <text x="880" y="704" fill="#3fb950">&lt;-- real HTTPS, real session</text>
+    </g>
+
+    <line x1="140" y1="738" x2="1264" y2="738" stroke="#3d444d" stroke-width="1.5" stroke-dasharray="4 6"/>
+
+    <g font-family="Consolas, monospace" font-size="23">
+      <text x="172" y="778" fill="#6e7681">provisioning &#8594; browser success</text>
+      <text x="700" y="778" fill="#e6edf3">2h 10m</text>
+      <text x="880" y="778" fill="#6e7681">DNS wait included</text>
+    </g>
+
+    <text x="96" y="882" font-family="Consolas, monospace" font-size="23" fill="#484f58">the lesson:</text>
+    <text x="252" y="882" font-family="Consolas, monospace" font-size="23" fill="#8b949e">a green checklist still needs the asterisks attached</text>
+
+  </g>
+</svg>
